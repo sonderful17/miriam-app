@@ -1009,35 +1009,37 @@ const CycleApp = () => {
 
         {/* Bottom Navigation */}
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-indigo-100 shadow-lg">
-          <div className="max-w-4xl mx-auto px-6 py-4 flex justify-around">
-            <button 
-              onClick={() => setCurrentView('today')}
-              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
-            >
-              <span className="text-2xl">🏠</span>
-              <span className="text-xs font-medium">Today</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('cycle')}
-              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
-            >
-              <span className="text-2xl">📅</span>
-              <span className="text-xs font-medium">Cycle</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('log')}
-              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
-            >
-              <span className="text-2xl">📝</span>
-              <span className="text-xs font-medium">Log</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('me')}
-              className="flex flex-col items-center space-y-1 text-indigo-700"
-            >
-              <span className="text-2xl">👤</span>
-              <span className="text-xs font-semibold">Me</span>
-            </button>
+          <div className="max-w-4xl mx-auto px-4 py-3">
+            <div className="flex justify-between items-center gap-2">
+              <button 
+                onClick={() => setCurrentView('today')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-2xl">🏠</span>
+                <span className="text-xs font-medium mt-1">Today</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('cycle')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-2xl">📅</span>
+                <span className="text-xs font-medium mt-1">Cycle</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('log')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-2xl">📝</span>
+                <span className="text-xs font-medium mt-1">Log</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('me')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-indigo-700 bg-indigo-50"
+              >
+                <span className="text-2xl">👤</span>
+                <span className="text-xs font-semibold mt-1">Me</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1214,35 +1216,37 @@ const CycleApp = () => {
 
         {/* Bottom Navigation */}
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-indigo-100 shadow-lg">
-          <div className="max-w-4xl mx-auto px-6 py-4 flex justify-around">
-            <button 
-              onClick={() => setCurrentView('today')}
-              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
-            >
-              <span className="text-2xl">🏠</span>
-              <span className="text-xs font-medium">Today</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('cycle')}
-              className="flex flex-col items-center space-y-1 text-indigo-700"
-            >
-              <span className="text-2xl">📅</span>
-              <span className="text-xs font-semibold">Cycle</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('log')}
-              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
-            >
-              <span className="text-2xl">📝</span>
-              <span className="text-xs font-medium">Log</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('me')}
-              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
-            >
-              <span className="text-2xl">👤</span>
-              <span className="text-xs font-medium">Me</span>
-            </button>
+          <div className="max-w-4xl mx-auto px-4 py-3">
+            <div className="flex justify-between items-center gap-2">
+              <button 
+                onClick={() => setCurrentView('today')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-2xl">🏠</span>
+                <span className="text-xs font-medium mt-1">Today</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('cycle')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-indigo-700 bg-indigo-50"
+              >
+                <span className="text-2xl">📅</span>
+                <span className="text-xs font-semibold mt-1">Cycle</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('log')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-2xl">📝</span>
+                <span className="text-xs font-medium mt-1">Log</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('me')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-2xl">👤</span>
+                <span className="text-xs font-medium mt-1">Me</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1366,35 +1370,37 @@ const CycleApp = () => {
         </div>
 
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-indigo-100 shadow-lg">
-          <div className="max-w-4xl mx-auto px-6 py-4 flex justify-around">
-            <button 
-              onClick={() => setCurrentView('today')}
-              className={`flex flex-col items-center space-y-1 transition ${currentView === 'today' ? 'text-indigo-700' : 'text-gray-400 hover:text-indigo-600'}`}
-            >
-              <span className="text-2xl">🏠</span>
-              <span className="text-xs font-semibold">Today</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('cycle')}
-              className={`flex flex-col items-center space-y-1 transition ${currentView === 'cycle' ? 'text-indigo-700' : 'text-gray-400 hover:text-indigo-600'}`}
-            >
-              <span className="text-2xl">📅</span>
-              <span className="text-xs font-medium">Cycle</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('log')}
-              className={`flex flex-col items-center space-y-1 transition ${currentView === 'log' ? 'text-indigo-700' : 'text-gray-400 hover:text-indigo-600'}`}
-            >
-              <span className="text-2xl">📝</span>
-              <span className="text-xs font-medium">Log</span>
-            </button>
-            <button 
-              onClick={() => setCurrentView('me')}
-              className={`flex flex-col items-center space-y-1 transition ${currentView === 'me' ? 'text-indigo-700' : 'text-gray-400 hover:text-indigo-600'}`}
-            >
-              <span className="text-2xl">👤</span>
-              <span className="text-xs font-medium">Me</span>
-            </button>
+          <div className="max-w-4xl mx-auto px-4 py-3">
+            <div className="flex justify-between items-center gap-2">
+              <button 
+                onClick={() => setCurrentView('today')}
+                className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'today' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+              >
+                <span className="text-2xl">🏠</span>
+                <span className="text-xs font-semibold mt-1">Today</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('cycle')}
+                className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'cycle' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+              >
+                <span className="text-2xl">📅</span>
+                <span className="text-xs font-medium mt-1">Cycle</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('log')}
+                className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'log' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+              >
+                <span className="text-2xl">📝</span>
+                <span className="text-xs font-medium mt-1">Log</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('me')}
+                className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'me' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+              >
+                <span className="text-2xl">👤</span>
+                <span className="text-xs font-medium mt-1">Me</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
