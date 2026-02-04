@@ -1313,7 +1313,7 @@ const CycleApp = () => {
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100" style={{fontFamily: 'Lexend, sans-serif'}}>
         <div className="bg-white shadow-sm border-b border-indigo-100">
           <div className="max-w-4xl mx-auto px-6 py-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">🌙 Cycle</h1>
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">🌙 miriam</h1>
           </div>
         </div>
 
