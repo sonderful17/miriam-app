@@ -1376,28 +1376,24 @@ const CycleApp = () => {
                 onClick={() => setCurrentView('today')}
                 className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'today' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
               >
-                <span className="text-2xl">🏠</span>
                 <span className="text-xs font-semibold mt-1">Today</span>
               </button>
               <button 
                 onClick={() => setCurrentView('cycle')}
                 className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'cycle' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
               >
-                <span className="text-2xl">📅</span>
                 <span className="text-xs font-medium mt-1">Cycle</span>
               </button>
               <button 
                 onClick={() => setCurrentView('log')}
                 className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'log' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
               >
-                <span className="text-2xl">📝</span>
                 <span className="text-xs font-medium mt-1">Log</span>
               </button>
               <button 
                 onClick={() => setCurrentView('me')}
                 className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'me' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
               >
-                <span className="text-2xl">👤</span>
                 <span className="text-xs font-medium mt-1">Me</span>
               </button>
             </div>
