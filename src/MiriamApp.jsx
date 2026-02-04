@@ -102,14 +102,14 @@ const CycleApp = () => {
     const baseGuidance = {
       'Menstrual': {
         training: {
-          message: 'Gentle movement, yoga, or walks. Honour your body\'s need for rest.',
+          message: 'Gentle movement, yoga, or walks. Honor your body\'s need for rest.',
           science: 'During menstruation, progesterone and estrogen are at their lowest. Energy levels naturally dip, and your body is focused on shedding the uterine lining.',
           suggestions: ['Restorative yoga', 'Walking', 'Gentle stretching', 'Rest days']
         },
         nutrition: {
           message: 'Iron-rich foods and anti-inflammatory meals. Warming soups and stews.',
           science: 'You\'re losing iron through menstruation. Anti-inflammatory foods help reduce prostaglandins that cause cramping.',
-          suggestions: ['Leafy greens', 'Red meat', 'Lentils', 'Ginger tea', 'Turmeric', 'Bone broth']
+          suggestions: ['Leafy greens', 'Red meat or lentils', 'Ginger tea', 'Turmeric', 'Bone broth']
         },
         energy: {
           message: 'Rest is productive. Low social energy is natural - honour inward time.',
@@ -119,7 +119,7 @@ const CycleApp = () => {
         fasting: {
           message: 'Shorter fasting windows (12-14h) or skip altogether. Nourishment first.',
           science: 'Your body needs consistent fuel during menstruation. Fasting can add stress when energy is already low.',
-          suggestions: ['Eat when hungry', 'Focus on nourishment']
+          suggestions: ['12-14 hour fasting', 'Eat when hungry', 'Focus on nourishment']
         }
       },
       'Follicular': {
@@ -139,20 +139,20 @@ const CycleApp = () => {
           suggestions: ['Start new projects', 'Social events', 'Brainstorming', 'Networking']
         },
         fasting: {
-          message: 'Can handle longer fasts if that feels good to you. Stay hydrated.',
+          message: 'Can handle longer fasts (16-18h) if that feels good to you.',
           science: 'Higher estrogen improves insulin sensitivity, making fasting more comfortable and effective.',
-          suggestions: ['16-18hr fasts', 'Listen to your body']
+          suggestions: ['16:8 fasting', '18:6 fasting', 'Listen to your body']
         }
       },
       'Ovulatory': {
         training: {
           message: 'High intensity workouts and group classes. Peak performance window!',
           science: 'Estrogen peaks and testosterone rises. Pain tolerance is highest, and you have maximum strength and endurance.',
-          suggestions: ['HIIT', 'Group fitness', 'Competitive sports', 'Max effort', 'Go For It!']
+          suggestions: ['HIIT', 'CrossFit', 'Group fitness', 'Competitive sports', 'Max effort workouts']
         },
         nutrition: {
-          message: 'Fiber and antioxidants. Your digestion is strong - enjoy raw veggies!',
-          science: 'Estrogen supports gut motility and metabolism. Your body handles fiber and raw foods easily.',
+          message: 'Fibre and antioxidants. Your digestion is strong - enjoy raw veggies!',
+          science: 'Estrogen supports gut motility and metabolism. Your body handles fibre and raw foods easily.',
           suggestions: ['Raw salads', 'Cruciferous veggies', 'Berries', 'Nuts and seeds', 'Whole grains']
         },
         energy: {
@@ -170,7 +170,7 @@ const CycleApp = () => {
         training: {
           message: 'Moderate intensity - pilates, swimming, or steady cardio work well.',
           science: 'Progesterone rises, which can increase body temperature and reduce exercise tolerance. Focus on sustainable movement.',
-          suggestions: ['Pilates', 'Swimming', 'Vinyasa flow', 'Moderate cardio', 'Strength maintenance']
+          suggestions: ['Pilates', 'Swimming', 'Barre', 'Moderate cardio', 'Strength maintenance']
         },
         nutrition: {
           message: 'Complex carbs and magnesium-rich foods. Honor cravings mindfully.',
@@ -180,7 +180,7 @@ const CycleApp = () => {
         energy: {
           message: 'Energy gradually declines. Focus on completing tasks and nesting.',
           science: 'Progesterone has a calming, sedating effect. This is natural preparation for your period or potential pregnancy.',
-          suggestions: ['Finish projects', 'Home organisation', 'Cozy activities', 'Self-care']
+          suggestions: ['Finish projects', 'Home organization', 'Cozy activities', 'Self-care']
         },
         fasting: {
           message: 'Listen to hunger cues. Your body may need more frequent nourishment.',
@@ -201,7 +201,7 @@ const CycleApp = () => {
           ...guidance,
           training: {
             ...guidance.training,
-            message: '⚠️ Low sleep detected. Prioritise rest and gentle movement today.',
+            message: '⚠️ Low sleep detected. Prioritize rest and gentle movement today.',
             modifier: 'Your body repairs during sleep. Without adequate rest, intense training adds stress rather than building strength.'
           },
           fasting: {
@@ -222,7 +222,7 @@ const CycleApp = () => {
           },
           energy: {
             ...guidance.energy,
-            message: '⚠️ Your nervous system needs support. Prioritise calming activities.',
+            message: '⚠️ Your nervous system needs support. Prioritize calming activities.',
             modifier: 'High cortisol can deplete neurotransmitters. Rest isn\'t lazy - it\'s essential.'
           },
           fasting: {
@@ -239,7 +239,7 @@ const CycleApp = () => {
           training: {
             ...guidance.training,
             message: 'Low energy in late luteal is completely normal. Light stretching or rest.',
-            modifier: 'Progesterone naturally lowers energy. This is your body preparing for menstruation - honor it.'
+            modifier: 'Progesterone naturally lowers energy. This is your body preparing for menstruation - honour it.'
           }
         };
       }
@@ -286,7 +286,7 @@ const CycleApp = () => {
             <span className="text-2xl">✨</span>
             <div>
               <h3 className="font-semibold text-indigo-900">Personalised Guidance</h3>
-              <p className="text-sm text-indigo-700">Recommendations that adapt to your rhythm</p>
+              <p className="text-sm text-indigo-700">Recommendations that adapt to your unique rhythm</p>
             </div>
           </div>
         </div>
@@ -667,6 +667,383 @@ const CycleApp = () => {
     );
   };
 
+  // Me/Settings View
+  const MeView = () => {
+    const [isEditingProfile, setIsEditingProfile] = useState(false);
+    const [editedProfile, setEditedProfile] = useState({
+      lastPeriodStart: '',
+      lastPeriodEnd: '',
+      averageCycleLength: 28,
+      averagePeriodLength: 5,
+      isIrregular: false
+    });
+
+    const calculateStreak = () => {
+      const logs = userData?.dailyLogs || {};
+      const dates = Object.keys(logs).sort().reverse();
+      
+      if (dates.length === 0) return 0;
+      
+      const today = new Date().toISOString().split('T')[0];
+      let streak = 0;
+      let currentDate = new Date();
+      
+      // Check if today is logged
+      if (!logs[today]) {
+        // If today isn't logged, check if yesterday was (grace period)
+        currentDate.setDate(currentDate.getDate() - 1);
+        const yesterday = currentDate.toISOString().split('T')[0];
+        if (!logs[yesterday]) return 0;
+      }
+      
+      // Count backwards from today
+      currentDate = new Date();
+      while (true) {
+        const dateStr = currentDate.toISOString().split('T')[0];
+        if (logs[dateStr]) {
+          streak++;
+          currentDate.setDate(currentDate.getDate() - 1);
+        } else {
+          break;
+        }
+      }
+      
+      return streak;
+    };
+
+    const startEditingProfile = () => {
+      setEditedProfile({
+        lastPeriodStart: userData.profile.lastPeriodStart,
+        lastPeriodEnd: userData.profile.lastPeriodEnd,
+        averageCycleLength: userData.profile.averageCycleLength,
+        averagePeriodLength: userData.profile.averagePeriodLength,
+        isIrregular: userData.profile.isIrregular
+      });
+      setIsEditingProfile(true);
+    };
+
+    const saveProfileEdits = () => {
+      const updatedData = {
+        ...userData,
+        profile: {
+          ...userData.profile,
+          ...editedProfile
+        }
+      };
+      saveUserData(updatedData);
+      setIsEditingProfile(false);
+    };
+
+    const exportData = () => {
+      const dataStr = JSON.stringify(userData, null, 2);
+      const blob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `miriam-cycle-data-${new Date().toISOString().split('T')[0]}.json`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    };
+
+    const importData = (event) => {
+      const file = event.target.files[0];
+      if (!file) return;
+      
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        try {
+          const imported = JSON.parse(e.target.result);
+          saveUserData(imported);
+          alert('Data imported successfully!');
+        } catch (error) {
+          alert('Error importing data. Please check the file format.');
+        }
+      };
+      reader.readAsText(file);
+    };
+
+    const clearAllData = () => {
+      if (window.confirm('Are you sure you want to delete all your data? This cannot be undone.')) {
+        if (window.confirm('Really delete everything? This is permanent.')) {
+          localStorage.removeItem('cycleAppData');
+          window.location.reload();
+        }
+      }
+    };
+
+    const streak = calculateStreak();
+    const daysLogged = Object.keys(userData?.dailyLogs || {}).length;
+    const cyclesTracked = userData?.periodHistory?.length || 0;
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-32" style={{fontFamily: 'Lexend, sans-serif'}}>
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-indigo-100">
+          <div className="max-w-4xl mx-auto px-6 py-4">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">Me</h1>
+          </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+          {/* Data Stats */}
+          <div className="bg-white rounded-3xl p-6 shadow-lg border border-indigo-100">
+            <h2 className="text-lg font-bold text-indigo-900 mb-4">Your Progress</h2>
+            <div className="space-y-4">
+              <div className="flex items-center justify-between p-4 bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl">
+                <div className="flex items-center space-x-3">
+                  <span className="text-3xl">🔥</span>
+                  <div>
+                    <p className="text-sm text-gray-600">Current Streak</p>
+                    <p className="text-2xl font-bold text-indigo-900">{streak} days</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-2 gap-3">
+                <div className="p-4 bg-indigo-50 rounded-xl border border-indigo-100">
+                  <p className="text-sm text-gray-600 mb-1">Days Logged</p>
+                  <p className="text-2xl font-bold text-indigo-900">{daysLogged}</p>
+                </div>
+                <div className="p-4 bg-purple-50 rounded-xl border border-purple-100">
+                  <p className="text-sm text-gray-600 mb-1">Cycles Tracked</p>
+                  <p className="text-2xl font-bold text-purple-900">{cyclesTracked}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Profile Info */}
+          <div className="bg-white rounded-3xl p-6 shadow-lg border border-indigo-100">
+            <div className="flex items-center justify-between mb-4">
+              <h2 className="text-lg font-bold text-indigo-900">Your Profile</h2>
+              {!isEditingProfile && (
+                <button
+                  onClick={startEditingProfile}
+                  className="text-sm text-indigo-600 hover:text-indigo-800 font-semibold"
+                >
+                  Edit
+                </button>
+              )}
+            </div>
+
+            {!isEditingProfile ? (
+              <div className="space-y-2 text-sm">
+                <div className="flex justify-between py-2 border-b border-indigo-50">
+                  <span className="text-gray-600">Cycle Length</span>
+                  <span className="font-semibold text-indigo-900">{userData.profile.averageCycleLength} days</span>
+                </div>
+                <div className="flex justify-between py-2 border-b border-indigo-50">
+                  <span className="text-gray-600">Period Length</span>
+                  <span className="font-semibold text-indigo-900">{userData.profile.averagePeriodLength} days</span>
+                </div>
+                <div className="flex justify-between py-2 border-b border-indigo-50">
+                  <span className="text-gray-600">Last Period Start</span>
+                  <span className="font-semibold text-indigo-900">{new Date(userData.profile.lastPeriodStart).toLocaleDateString()}</span>
+                </div>
+                <div className="flex justify-between py-2 border-b border-indigo-50">
+                  <span className="text-gray-600">Last Period End</span>
+                  <span className="font-semibold text-indigo-900">{new Date(userData.profile.lastPeriodEnd).toLocaleDateString()}</span>
+                </div>
+                <div className="flex justify-between py-2">
+                  <span className="text-gray-600">Irregular Cycle</span>
+                  <span className="font-semibold text-indigo-900">{userData.profile.isIrregular ? 'Yes' : 'No'}</span>
+                </div>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-sm font-medium text-indigo-900 mb-2">
+                    Last Period Start
+                  </label>
+                  <input
+                    type="date"
+                    value={editedProfile.lastPeriodStart}
+                    onChange={(e) => setEditedProfile({...editedProfile, lastPeriodStart: e.target.value})}
+                    max={new Date().toISOString().split('T')[0]}
+                    className="w-full px-4 py-2 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-indigo-900 mb-2">
+                    Last Period End
+                  </label>
+                  <input
+                    type="date"
+                    value={editedProfile.lastPeriodEnd}
+                    onChange={(e) => setEditedProfile({...editedProfile, lastPeriodEnd: e.target.value})}
+                    min={editedProfile.lastPeriodStart}
+                    max={new Date().toISOString().split('T')[0]}
+                    className="w-full px-4 py-2 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-indigo-900 mb-2">
+                    Average Cycle Length (days)
+                  </label>
+                  <input
+                    type="number"
+                    value={editedProfile.averageCycleLength}
+                    onChange={(e) => setEditedProfile({...editedProfile, averageCycleLength: parseInt(e.target.value)})}
+                    min="21"
+                    max="45"
+                    className="w-full px-4 py-2 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-indigo-900 mb-2">
+                    Average Period Length (days)
+                  </label>
+                  <input
+                    type="number"
+                    value={editedProfile.averagePeriodLength}
+                    onChange={(e) => setEditedProfile({...editedProfile, averagePeriodLength: parseInt(e.target.value)})}
+                    min="1"
+                    max="10"
+                    className="w-full px-4 py-2 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
+                  />
+                </div>
+
+                <div className="bg-indigo-50 rounded-xl p-4 border border-indigo-200">
+                  <label className="flex items-start space-x-3 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={editedProfile.isIrregular}
+                      onChange={(e) => setEditedProfile({...editedProfile, isIrregular: e.target.checked})}
+                      className="mt-1 h-5 w-5 text-indigo-700 rounded focus:ring-indigo-500 border-indigo-300"
+                    />
+                    <div>
+                      <p className="font-semibold text-indigo-900">My cycle is irregular</p>
+                      <p className="text-sm text-indigo-700">Cycles vary by more than 7 days</p>
+                    </div>
+                  </label>
+                </div>
+
+                <div className="flex space-x-3 pt-2">
+                  <button
+                    onClick={() => setIsEditingProfile(false)}
+                    className="flex-1 bg-gray-100 text-gray-700 py-3 rounded-xl font-semibold hover:bg-gray-200 transition"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    onClick={saveProfileEdits}
+                    className="flex-1 bg-gradient-to-r from-indigo-700 to-purple-800 text-white py-3 rounded-xl font-semibold hover:shadow-xl transition"
+                  >
+                    Save Changes
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Privacy */}
+          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-6 shadow-lg border-2 border-indigo-200">
+            <div className="flex items-start space-x-3">
+              <span className="text-3xl">🔒</span>
+              <div>
+                <h3 className="font-bold text-indigo-900 mb-2">Your Data is Private</h3>
+                <p className="text-sm text-indigo-800 leading-relaxed">
+                  All your data is stored locally on this device. Nothing is sent to any server or cloud service. You have complete control.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Data Management */}
+          <div className="bg-white rounded-3xl p-6 shadow-lg border border-indigo-100 space-y-4">
+            <h2 className="text-lg font-bold text-indigo-900">Data Management</h2>
+            
+            <div className="space-y-3">
+              <button
+                onClick={exportData}
+                className="w-full flex items-center justify-between p-4 bg-indigo-50 hover:bg-indigo-100 rounded-xl border border-indigo-200 transition"
+              >
+                <div className="flex items-center space-x-3">
+                  <span className="text-2xl">📥</span>
+                  <div className="text-left">
+                    <p className="font-semibold text-indigo-900">Export Data</p>
+                    <p className="text-xs text-gray-600">Download a backup file</p>
+                  </div>
+                </div>
+                <span className="text-indigo-600">→</span>
+              </button>
+
+              <label className="w-full flex items-center justify-between p-4 bg-indigo-50 hover:bg-indigo-100 rounded-xl border border-indigo-200 transition cursor-pointer">
+                <div className="flex items-center space-x-3">
+                  <span className="text-2xl">📤</span>
+                  <div className="text-left">
+                    <p className="font-semibold text-indigo-900">Import Data</p>
+                    <p className="text-xs text-gray-600">Restore from a backup file</p>
+                  </div>
+                </div>
+                <span className="text-indigo-600">→</span>
+                <input
+                  type="file"
+                  accept=".json"
+                  onChange={importData}
+                  className="hidden"
+                />
+              </label>
+
+              <button
+                onClick={clearAllData}
+                className="w-full flex items-center justify-between p-4 bg-red-50 hover:bg-red-100 rounded-xl border border-red-200 transition"
+              >
+                <div className="flex items-center space-x-3">
+                  <span className="text-2xl">🗑️</span>
+                  <div className="text-left">
+                    <p className="font-semibold text-red-900">Clear All Data</p>
+                    <p className="text-xs text-red-600">Permanently delete everything</p>
+                  </div>
+                </div>
+                <span className="text-red-600">→</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom Navigation */}
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-indigo-100 shadow-lg">
+          <div className="max-w-4xl mx-auto px-6 py-4 flex justify-around">
+            <button 
+              onClick={() => setCurrentView('today')}
+              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
+            >
+              <span className="text-2xl">🏠</span>
+              <span className="text-xs font-medium">Today</span>
+            </button>
+            <button 
+              onClick={() => setCurrentView('cycle')}
+              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
+            >
+              <span className="text-2xl">📅</span>
+              <span className="text-xs font-medium">Cycle</span>
+            </button>
+            <button 
+              onClick={() => setCurrentView('log')}
+              className="flex flex-col items-center space-y-1 text-gray-400 hover:text-indigo-600 transition"
+            >
+              <span className="text-2xl">📝</span>
+              <span className="text-xs font-medium">Log</span>
+            </button>
+            <button 
+              onClick={() => setCurrentView('me')}
+              className="flex flex-col items-center space-y-1 text-indigo-700"
+            >
+              <span className="text-2xl">👤</span>
+              <span className="text-xs font-semibold">Me</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
   // Cycle Calendar View
   const CycleView = () => {
     // Generate full current cycle (Day 1 to Day cycleLength)
@@ -690,22 +1067,22 @@ const CycleApp = () => {
         if (cycleDay <= userData.profile.averagePeriodLength) {
           phase = 'menstrual';
           phaseName = 'Menstrual';
-          phaseColor = 'bg-gradient-to-br from-indigo-800 to-purple-900';
+          phaseColor = 'bg-[#8C48AE]';
           phaseIcon = '🌑';
         } else if (cycleDay <= 13) {
           phase = 'follicular';
           phaseName = 'Follicular';
-          phaseColor = 'bg-gradient-to-br from-indigo-600 to-purple-700';
+          phaseColor = 'bg-[#FFDAB9]';
           phaseIcon = '🌒';
         } else if (cycleDay <= 16) {
           phase = 'ovulatory';
           phaseName = 'Ovulatory';
-          phaseColor = 'bg-gradient-to-br from-orange-500 to-orange-700';
+          phaseColor = 'bg-[#E08C34]';
           phaseIcon = '🌕';
         } else {
           phase = 'luteal';
           phaseName = 'Luteal';
-          phaseColor = 'bg-gradient-to-br from-purple-700 to-indigo-800';
+          phaseColor = 'bg-[#E9D8E6]';
           phaseIcon = '🌖';
         }
         
@@ -755,28 +1132,28 @@ const CycleApp = () => {
             <h3 className="font-bold text-indigo-900 mb-3">Phase Guide</h3>
             <div className="grid grid-cols-2 gap-3">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-800 to-purple-900"></div>
+                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#8C48AE'}}></div>
                 <div className="text-sm">
                   <p className="font-semibold text-indigo-900">Menstrual</p>
                   <p className="text-gray-600 text-xs">Days {phaseRanges.menstrual.start}-{phaseRanges.menstrual.end}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-700"></div>
+                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#FFDAB9'}}></div>
                 <div className="text-sm">
                   <p className="font-semibold text-indigo-900">Follicular</p>
                   <p className="text-gray-600 text-xs">Days {phaseRanges.follicular.start}-{phaseRanges.follicular.end}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-orange-500 to-orange-700"></div>
+                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#E08C34'}}></div>
                 <div className="text-sm">
                   <p className="font-semibold text-indigo-900">Ovulatory</p>
                   <p className="text-gray-600 text-xs">Days {phaseRanges.ovulatory.start}-{phaseRanges.ovulatory.end}</p>
                 </div>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple-700 to-indigo-800"></div>
+                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#E9D8E6'}}></div>
                 <div className="text-sm">
                   <p className="font-semibold text-indigo-900">Luteal</p>
                   <p className="text-gray-600 text-xs">Days {phaseRanges.luteal.start}-{phaseRanges.luteal.end}</p>
@@ -788,35 +1165,49 @@ const CycleApp = () => {
           {/* Calendar Grid */}
           <div className="bg-white rounded-2xl p-5 shadow-md border border-indigo-100">
             <div className="grid grid-cols-7 gap-2">
-              {cycleDays.map((day) => (
-                <div 
-                  key={day.cycleDay}
-                  className={`
-                    ${day.phaseColor} 
-                    rounded-xl p-3 text-white relative
-                    ${day.isToday ? 'ring-4 ring-orange-400 shadow-xl scale-105' : 'shadow-md'}
-                    ${day.isPast ? 'opacity-60' : ''}
-                    transition-all
-                  `}
-                >
-                  <div className="text-center">
-                    <p className="text-xs font-medium opacity-90">{day.dayName}</p>
-                    <p className="text-xl font-bold">{day.dayNum}</p>
-                    <p className="text-xs opacity-75">{day.monthShort}</p>
-                    <p className="text-xs font-semibold mt-1">Day {day.cycleDay}</p>
+              {cycleDays.map((day) => {
+                const bgColors = {
+                  'menstrual': '#8C48AE',
+                  'follicular': '#FFDAB9', 
+                  'ovulatory': '#E08C34',
+                  'luteal': '#E9D8E6'
+                };
+                
+                const textColor = (day.phase === 'menstrual' || day.phase === 'ovulatory') ? '#FFFFFF' : '#1F2937';
+                
+                return (
+                  <div 
+                    key={day.cycleDay}
+                    style={{
+                      backgroundColor: bgColors[day.phase],
+                      color: textColor
+                    }}
+                    className={`
+                      rounded-xl p-3 relative
+                      ${day.isToday ? 'ring-4 ring-orange-400 shadow-xl scale-105' : 'shadow-md'}
+                      ${day.isPast ? 'opacity-60' : ''}
+                      transition-all
+                    `}
+                  >
+                    <div className="text-center">
+                      <p className="text-xs font-medium opacity-90">{day.dayName}</p>
+                      <p className="text-xl font-bold">{day.dayNum}</p>
+                      <p className="text-xs opacity-75">{day.monthShort}</p>
+                      <p className="text-xs font-semibold mt-1">Day {day.cycleDay}</p>
+                    </div>
+                    {day.hasLog && (
+                      <div className="absolute top-1 right-1">
+                        <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                      </div>
+                    )}
+                    {day.isToday && (
+                      <div className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">
+                        TODAY
+                      </div>
+                    )}
                   </div>
-                  {day.hasLog && (
-                    <div className="absolute top-1 right-1">
-                      <div className="w-2 h-2 bg-green-400 rounded-full"></div>
-                    </div>
-                  )}
-                  {day.isToday && (
-                    <div className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">
-                      TODAY
-                    </div>
-                  )}
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -917,11 +1308,8 @@ const CycleApp = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100" style={{fontFamily: 'Lexend, sans-serif'}}>
         <div className="bg-white shadow-sm border-b border-indigo-100">
-          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="max-w-4xl mx-auto px-6 py-4">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">🌙 Cycle</h1>
-            <button className="text-indigo-400 hover:text-indigo-600 transition">
-              ⚙️
-            </button>
           </div>
         </div>
 
@@ -1022,6 +1410,7 @@ const CycleApp = () => {
 
   if (currentView === 'log') return <LogView />;
   if (currentView === 'cycle') return <CycleView />;
+  if (currentView === 'me') return <MeView />;
   if (currentView === 'today') return <TodayView />;
   
   return <TodayView />;
