@@ -695,10 +695,10 @@ const CycleApp = () => {
           <div className="bg-white rounded-3xl p-8 shadow-lg border border-indigo-100 space-y-6">
             <div className="text-center">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent mb-2">
-                Miriam: Your Cycle, Your Wisdom
+                Miriam: Your Cycle Guide
               </h2>
               <p className="text-lg text-gray-600 italic">
-                Like an older sister with all the tips and tricks but with the science to back it up.
+                Like an older sister with all the tips, tricks and the science to back it up.
               </p>
             </div>
 
@@ -710,7 +710,7 @@ const CycleApp = () => {
               </p>
               
               <p>
-                No shame, just practical guidance on how to work <em>with</em> your cycle rather than against it—so you won't be doubled over cramping when Aunt Flo next comes knocking.
+                No shame, just practical guidance on how to work <em>with</em> your cycle rather than against it, so you won't be doubled over cramping when Aunt Flo next comes knocking.
               </p>
             </div>
 
@@ -722,7 +722,7 @@ const CycleApp = () => {
                 <span>A note on privacy</span>
               </h3>
               <p className="text-sm text-indigo-900 leading-relaxed">
-                Miriam is a steel trap. Your data never leaves your device. This is your body, your data, your choice. Just remember to use the same device each time (Miriam currently operates on local device storage only, so your logs live where you left them).
+                Miriam is designed so your data never leaves your device. This is your body, your data, your choice. Just remember to use the same device each time (Miriam currently operates on local device storage only, so your logs live where you left them).
               </p>
             </div>
           </div>
