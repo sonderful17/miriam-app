@@ -17,15 +17,6 @@ const CycleApp = () => {
     averagePeriodLength: 5,
     isIrregular: false
   });
-  const [todayLog, setTodayLog] = useState({
-    sleep: '',
-    mood: '',
-    energy: '',
-    stress: '',
-    workout: { type: '', intensity: '', notes: '' },
-    fasting: '',
-    notes: ''
-  });
 
   // Load data from localStorage on mount
   useEffect(() => {
@@ -457,6 +448,15 @@ const CycleApp = () => {
 
   // Daily Log View
   const LogView = () => {
+      const [todayLog, setTodayLog] = useState({
+    sleep: '',
+    mood: '',
+    energy: '',
+    stress: '',
+    workout: { type: '', intensity: '', notes: '' },
+    fasting: '',
+    notes: ''
+  });
     const today = new Date().toISOString().split('T')[0];
     const existingLog = userData?.dailyLogs?.[today];
 
@@ -637,7 +637,7 @@ const CycleApp = () => {
                 type="text"
                 value={todayLog.fasting}
                 onChange={(e) => setTodayLog({...todayLog, fasting: e.target.value})}
-                placeholder="e.g., 16:8, lunch and dinner or skip"
+                placeholder="e.g., 3 meals 2 snacks, lunch and dinner, 16:8"
                 className="w-full px-4 py-3 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
               />
             </div>
