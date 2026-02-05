@@ -9,7 +9,7 @@ document.head.appendChild(fontLink);
 const CycleApp = () => {
   const [userData, setUserData] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
-  const [currentView, setCurrentView] = useState('today'); // 'today', 'cycle', 'log', 'me'
+  const [currentView, setCurrentView] = useState('today'); // 'today', 'cycle', 'log', 'me', 'about'
   const [onboardingData, setOnboardingData] = useState({
     lastPeriodStart: '',
     lastPeriodEnd: '',
@@ -487,8 +487,14 @@ const CycleApp = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-32" style={{fontFamily: 'Lexend, sans-serif'}}>
         <div className="bg-white shadow-sm border-b border-indigo-100">
-          <div className="max-w-4xl mx-auto px-6 py-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">Log Today</h1>
+          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <button 
+              onClick={() => setCurrentView('about')}
+              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+            >
+              🌙 miriam
+            </button>
+            <h2 className="text-lg font-semibold text-gray-600">Log Today</h2>
           </div>
         </div>
 
@@ -583,7 +589,7 @@ const CycleApp = () => {
 
             <div>
               <label className="block text-sm font-semibold text-indigo-900 mb-2">
-                🏋️ Workout <span className="text-gray-400 font-normal">(optional)</span>
+                🏋️ Movement <span className="text-gray-400 font-normal">(optional)</span>
               </label>
               <input
                 type="text"
@@ -662,6 +668,103 @@ const CycleApp = () => {
           >
             Cancel
           </button>
+        </div>
+      </div>
+    );
+  };
+
+  // About/Project Information View
+  const AboutView = () => {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-32" style={{fontFamily: 'Lexend, sans-serif'}}>
+        {/* Header */}
+        <div className="bg-white shadow-sm border-b border-indigo-100">
+          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">About Miriam</h1>
+            <button 
+              onClick={() => setCurrentView('today')}
+              className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+          {/* Main Content */}
+          <div className="bg-white rounded-3xl p-8 shadow-lg border border-indigo-100 space-y-6">
+            <div className="text-center">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent mb-2">
+                Miriam: Your Cycle, Your Wisdom
+              </h2>
+              <p className="text-lg text-gray-600 italic">
+                Like an older sister with all the tips and tricks but with the science to back it up.
+              </p>
+            </div>
+
+            <div className="h-px bg-indigo-100"></div>
+
+            <div className="space-y-4 text-gray-700 leading-relaxed">
+              <p>
+                Miriam helps you understand your body's natural rhythm so you can make kinder, smarter choices about nutrition, training, and how you spend your energy throughout your cycle.
+              </p>
+              
+              <p>
+                No shame, just practical guidance on how to work <em>with</em> your cycle rather than against it—so you won't be doubled over cramping when Aunt Flo next comes knocking.
+              </p>
+            </div>
+
+            <div className="h-px bg-indigo-100"></div>
+
+            <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border border-indigo-200">
+              <h3 className="font-bold text-indigo-900 mb-3 flex items-center space-x-2">
+                <span className="text-xl">🔒</span>
+                <span>A note on privacy</span>
+              </h3>
+              <p className="text-sm text-indigo-900 leading-relaxed">
+                Miriam is a steel trap. Your data never leaves your device. This is your body, your data, your choice. Just remember to use the same device each time (Miriam currently operates on local device storage only, so your logs live where you left them).
+              </p>
+            </div>
+          </div>
+
+          <button
+            onClick={() => setCurrentView('today')}
+            className="w-full bg-gradient-to-r from-indigo-700 to-purple-800 text-white py-4 rounded-2xl font-semibold text-lg hover:shadow-xl hover:from-indigo-800 hover:to-purple-900 transform hover:scale-105 transition-all"
+          >
+            Back to Today
+          </button>
+        </div>
+
+        {/* Bottom Navigation */}
+        <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-indigo-100 shadow-lg">
+          <div className="max-w-4xl mx-auto px-4 py-3">
+            <div className="flex justify-between items-center gap-2">
+              <button 
+                onClick={() => setCurrentView('today')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-xs font-medium mt-1">Today</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('cycle')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-xs font-medium mt-1">Cycle</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('log')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-xs font-medium mt-1">Log</span>
+              </button>
+              <button 
+                onClick={() => setCurrentView('me')}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-xs font-medium mt-1">Me</span>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -781,8 +884,14 @@ const CycleApp = () => {
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-32" style={{fontFamily: 'Lexend, sans-serif'}}>
         {/* Header */}
         <div className="bg-white shadow-sm border-b border-indigo-100">
-          <div className="max-w-4xl mx-auto px-6 py-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">Me</h1>
+          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <button 
+              onClick={() => setCurrentView('about')}
+              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+            >
+              🌙 miriam
+            </button>
+            <h2 className="text-lg font-semibold text-gray-600">Me</h2>
           </div>
         </div>
 
@@ -1015,28 +1124,24 @@ const CycleApp = () => {
                 onClick={() => setCurrentView('today')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
-                <span className="text-2xl">🏠</span>
                 <span className="text-xs font-medium mt-1">Today</span>
               </button>
               <button 
                 onClick={() => setCurrentView('cycle')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
-                <span className="text-2xl">📅</span>
                 <span className="text-xs font-medium mt-1">Cycle</span>
               </button>
               <button 
                 onClick={() => setCurrentView('log')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
-                <span className="text-2xl">📝</span>
                 <span className="text-xs font-medium mt-1">Log</span>
               </button>
               <button 
                 onClick={() => setCurrentView('me')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-indigo-700 bg-indigo-50"
               >
-                <span className="text-2xl">👤</span>
                 <span className="text-xs font-semibold mt-1">Me</span>
               </button>
             </div>
@@ -1120,11 +1225,14 @@ const CycleApp = () => {
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-32" style={{fontFamily: 'Lexend, sans-serif'}}>
         {/* Header */}
         <div className="bg-white shadow-sm border-b border-indigo-100">
-          <div className="max-w-4xl mx-auto px-6 py-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">This Cycle</h1>
-            <p className="text-sm text-gray-600 mt-1">
-              {cycleDays[0].date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' })} - {cycleDays[cycleDays.length - 1].date.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-            </p>
+          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <button 
+              onClick={() => setCurrentView('about')}
+              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+            >
+              🌙 miriam
+            </button>
+            <h2 className="text-lg font-semibold text-gray-600">This Cycle</h2>
           </div>
         </div>
 
@@ -1222,28 +1330,24 @@ const CycleApp = () => {
                 onClick={() => setCurrentView('today')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
-                <span className="text-2xl">🏠</span>
                 <span className="text-xs font-medium mt-1">Today</span>
               </button>
               <button 
                 onClick={() => setCurrentView('cycle')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-indigo-700 bg-indigo-50"
               >
-                <span className="text-2xl">📅</span>
                 <span className="text-xs font-semibold mt-1">Cycle</span>
               </button>
               <button 
                 onClick={() => setCurrentView('log')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
-                <span className="text-2xl">📝</span>
                 <span className="text-xs font-medium mt-1">Log</span>
               </button>
               <button 
                 onClick={() => setCurrentView('me')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
-                <span className="text-2xl">👤</span>
                 <span className="text-xs font-medium mt-1">Me</span>
               </button>
             </div>
@@ -1313,7 +1417,12 @@ const CycleApp = () => {
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100" style={{fontFamily: 'Lexend, sans-serif'}}>
         <div className="bg-white shadow-sm border-b border-indigo-100">
           <div className="max-w-4xl mx-auto px-6 py-4">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">🌙 miriam</h1>
+            <button 
+              onClick={() => setCurrentView('about')}
+              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+            >
+              🌙 miriam
+            </button>
           </div>
         </div>
 
@@ -1410,6 +1519,7 @@ const CycleApp = () => {
     if (currentStep === 3) return <OnboardingCycleLength />;
   }
 
+  if (currentView === 'about') return <AboutView />;
   if (currentView === 'log') return <LogView />;
   if (currentView === 'cycle') return <CycleView />;
   if (currentView === 'me') return <MeView />;
