@@ -490,7 +490,7 @@ const CycleApp = () => {
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
             >
               🌙 miriam
             </button>
@@ -887,7 +887,7 @@ const CycleApp = () => {
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
             >
               🌙 miriam
             </button>
@@ -1228,7 +1228,7 @@ const CycleApp = () => {
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
             >
               🌙 miriam
             </button>
@@ -1419,7 +1419,7 @@ const CycleApp = () => {
           <div className="max-w-4xl mx-auto px-6 py-4">
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
             >
               🌙 miriam
             </button>
