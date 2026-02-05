@@ -102,7 +102,7 @@ const CycleApp = () => {
     const baseGuidance = {
       'Menstrual': {
         training: {
-          message: 'Gentle movement, yoga, or walks. Honor your body\'s need for rest.',
+          message: 'Gentle movement, yoga, or walks. Honour your body\'s need for rest.',
           science: 'During menstruation, progesterone and estrogen are at their lowest. Energy levels naturally dip, and your body is focused on shedding the uterine lining.',
           suggestions: ['Restorative yoga', 'Walking', 'Gentle stretching', 'Rest days']
         },
@@ -141,14 +141,14 @@ const CycleApp = () => {
         fasting: {
           message: 'Can handle longer fasts (16-18h) if that feels good to you.',
           science: 'Higher estrogen improves insulin sensitivity, making fasting more comfortable and effective.',
-          suggestions: ['16:8 fasting', '18:6 fasting', 'Listen to your body']
+          suggestions: ['16-18h fasts', 'Listen to your body']
         }
       },
       'Ovulatory': {
         training: {
           message: 'High intensity workouts and group classes. Peak performance window!',
           science: 'Estrogen peaks and testosterone rises. Pain tolerance is highest, and you have maximum strength and endurance.',
-          suggestions: ['HIIT', 'CrossFit', 'Group fitness', 'Competitive sports', 'Max effort workouts']
+          suggestions: ['HIIT', 'Group fitness', 'Compete with yourself', 'Max effort']
         },
         nutrition: {
           message: 'Fibre and antioxidants. Your digestion is strong - enjoy raw veggies!',
@@ -173,19 +173,19 @@ const CycleApp = () => {
           suggestions: ['Pilates', 'Swimming', 'Barre', 'Moderate cardio', 'Strength maintenance']
         },
         nutrition: {
-          message: 'Complex carbs and magnesium-rich foods. Honor cravings mindfully.',
+          message: 'Complex carbs and magnesium-rich foods. Honour cravings mindfully.',
           science: 'Progesterone increases appetite and shifts metabolism. Your body needs more calories (about 100-300 more per day).',
           suggestions: ['Oatmeal', 'Dark chocolate', 'Pumpkin seeds', 'Bananas', 'Whole grains']
         },
         energy: {
           message: 'Energy gradually declines. Focus on completing tasks and nesting.',
           science: 'Progesterone has a calming, sedating effect. This is natural preparation for your period or potential pregnancy.',
-          suggestions: ['Finish projects', 'Home organization', 'Cozy activities', 'Self-care']
+          suggestions: ['Finish projects', 'Home organisation', 'Cozy activities', 'Self-care']
         },
         fasting: {
           message: 'Listen to hunger cues. Your body may need more frequent nourishment.',
           science: 'Progesterone increases appetite and metabolic rate. Fasting can trigger stress hormones and worsen PMS.',
-          suggestions: ['Shorter windows', 'Eat regularly', 'Honor hunger', '12-14 hour max']
+          suggestions: ['Shorter windows', 'Eat regularly', 'Honour hunger', '12-14 hour max']
         }
       }
     };
@@ -201,7 +201,7 @@ const CycleApp = () => {
           ...guidance,
           training: {
             ...guidance.training,
-            message: '⚠️ Low sleep detected. Prioritize rest and gentle movement today.',
+            message: '⚠️ Low sleep detected. Prioritise rest and gentle movement today.',
             modifier: 'Your body repairs during sleep. Without adequate rest, intense training adds stress rather than building strength.'
           },
           fasting: {
@@ -222,7 +222,7 @@ const CycleApp = () => {
           },
           energy: {
             ...guidance.energy,
-            message: '⚠️ Your nervous system needs support. Prioritize calming activities.',
+            message: '⚠️ Your nervous system needs support. Prioritise calming activities.',
             modifier: 'High cortisol can deplete neurotransmitters. Rest isn\'t lazy - it\'s essential.'
           },
           fasting: {
@@ -488,13 +488,15 @@ const CycleApp = () => {
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-32" style={{fontFamily: 'Lexend, sans-serif'}}>
         <div className="bg-white shadow-sm border-b border-indigo-100">
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">
+              🌙 miriam
+            </h1>
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold transition"
             >
-              🌙 miriam
+              About
             </button>
-            <h2 className="text-lg font-semibold text-gray-600">Log Today</h2>
           </div>
         </div>
 
@@ -589,7 +591,7 @@ const CycleApp = () => {
 
             <div>
               <label className="block text-sm font-semibold text-indigo-900 mb-2">
-                🏋️ Movement <span className="text-gray-400 font-normal">(optional)</span>
+                💪 Movement <span className="text-gray-400 font-normal">(optional)</span>
               </label>
               <input
                 type="text"
@@ -629,13 +631,13 @@ const CycleApp = () => {
 
             <div>
               <label className="block text-sm font-semibold text-indigo-900 mb-2">
-                ⏰ Fasting Window <span className="text-gray-400 font-normal">(optional)</span>
+                ⏰ Meal Times <span className="text-gray-400 font-normal">(optional)</span>
               </label>
               <input
                 type="text"
                 value={todayLog.fasting}
                 onChange={(e) => setTodayLog({...todayLog, fasting: e.target.value})}
-                placeholder="e.g., 16:8, 18:6, or skip"
+                placeholder="e.g., 16:8, lunch and dinner or skip"
                 className="w-full px-4 py-3 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
               />
             </div>
@@ -680,7 +682,9 @@ const CycleApp = () => {
         {/* Header */}
         <div className="bg-white shadow-sm border-b border-indigo-100">
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
-            <h1 className="text-2xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">About Miriam</h1>
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">
+              🌙 miriam
+            </h1>
             <button 
               onClick={() => setCurrentView('today')}
               className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold"
@@ -694,11 +698,11 @@ const CycleApp = () => {
           {/* Main Content */}
           <div className="bg-white rounded-3xl p-8 shadow-lg border border-indigo-100 space-y-6">
             <div className="text-center">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent mb-2">
-                Miriam: Your Cycle Guide
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent mb-2">
+                Your Cycle Guide
               </h2>
               <p className="text-lg text-gray-600 italic">
-                Like an older sister with all the tips, tricks and the science to back it up.
+                Like an older sister with all the tips, tricks, and the science to back it up.
               </p>
             </div>
 
@@ -722,7 +726,7 @@ const CycleApp = () => {
                 <span>A note on privacy</span>
               </h3>
               <p className="text-sm text-indigo-900 leading-relaxed">
-                Miriam is designed so your data never leaves your device. This is your body, your data, your choice. Just remember to use the same device each time (Miriam currently operates on local device storage only, so your logs live where you left them).
+                Your data never leaves your device. Your body, your data, your choice. Just remember to use the same device each time. Miriam operates on local device storage only, so your logs live where you left them.
               </p>
             </div>
           </div>
@@ -885,13 +889,15 @@ const CycleApp = () => {
         {/* Header */}
         <div className="bg-white shadow-sm border-b border-indigo-100">
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">
+              🌙 miriam
+            </h1>
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold transition"
             >
-              🌙 miriam
+              About
             </button>
-            <h2 className="text-lg font-semibold text-gray-600">Me</h2>
           </div>
         </div>
 
@@ -1226,13 +1232,15 @@ const CycleApp = () => {
         {/* Header */}
         <div className="bg-white shadow-sm border-b border-indigo-100">
           <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">
+              🌙 miriam
+            </h1>
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold transition"
             >
-              🌙 miriam
+              About
             </button>
-            <h2 className="text-lg font-semibold text-gray-600">This Cycle</h2>
           </div>
         </div>
 
@@ -1416,12 +1424,15 @@ const CycleApp = () => {
     return (
       <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100" style={{fontFamily: 'Lexend, sans-serif'}}>
         <div className="bg-white shadow-sm border-b border-indigo-100">
-          <div className="max-w-4xl mx-auto px-6 py-4">
+          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">
+              🌙 miriam
+            </h1>
             <button 
               onClick={() => setCurrentView('about')}
-              className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent hover:from-indigo-800 hover:to-purple-900 transition"
+              className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold transition"
             >
-              🌙 miriam
+              About
             </button>
           </div>
         </div>
@@ -1463,10 +1474,10 @@ const CycleApp = () => {
             <h3 className="text-xl font-bold text-indigo-900">Today's Guidance</h3>
             
             <div className="space-y-4">
-              <GuidanceCard icon="🏋️" title="Training" category="training" data={guidance.training} />
+              <GuidanceCard icon="💪" title="Training" category="training" data={guidance.training} />
               <GuidanceCard icon="🥗" title="Nutrition" category="nutrition" data={guidance.nutrition} />
               <GuidanceCard icon="⚡" title="Energy & Social" category="energy" data={guidance.energy} />
-              <GuidanceCard icon="⏰" title="Fasting" category="fasting" data={guidance.fasting} />
+              <GuidanceCard icon="⏰" title="Meal Times" category="fasting" data={guidance.fasting} />
             </div>
           </div>
 
