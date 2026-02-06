@@ -79,9 +79,13 @@ const CycleApp = () => {
       phase = 'Ovulatory';
       phaseDay = cycleDay - 13;
       phaseColor = 'from-orange-500 to-orange-700';
-    } else {
-      phase = 'Luteal';
+    } else if (cycleDay <= 23) {
+      phase = 'Early Luteal';
       phaseDay = cycleDay - 16;
+      phaseColor = 'from-purple-600 to-indigo-700';
+    } else {
+      phase = 'Late Luteal';
+      phaseDay = cycleDay - 23;
       phaseColor = 'from-purple-700 to-indigo-800';
     }
     
@@ -103,53 +107,53 @@ const CycleApp = () => {
           suggestions: ['Leafy greens', 'Red meat or lentils', 'Ginger tea', 'Turmeric', 'Bone broth']
         },
         energy: {
-          message: 'Rest is productive. Low social energy is natural - honour inward time.',
+          message: 'Rest is productive. Low social energy is natural, say no without guilt or keep it close 💖',
           science: 'Low hormone levels can affect mood and energy. This is a natural time for introspection and rest.',
-          suggestions: ['Journal', 'Light social activities', 'Early bedtime', 'Solo time']
+          suggestions: ['Journal', 'Light social activities', 'Early bedtime', 'Self compassion']
         },
         fasting: {
-          message: 'Shorter fasting windows (12-14h) or skip altogether. Nourishment first.',
-          science: 'Your body needs consistent fuel during menstruation. Fasting can add stress when energy is already low.',
-          suggestions: ['12-14 hour fasting', 'Eat when hungry', 'Focus on nourishment']
+          message: 'Nourishment first, your body needs the fuel',
+          science: 'Your body needs consistent fuel during menstruation. Not eating can trigger cortisol release when energy is already low.',
+          suggestions: ['Eat when hungry', 'Focus on nourishment']
         }
       },
       'Follicular': {
         training: {
           message: 'Perfect time for strength training and HIIT. Your body is primed for power!',
           science: 'Rising estrogen improves insulin sensitivity, muscle protein synthesis, and pain tolerance. You recover faster and build strength more efficiently.',
-          suggestions: ['Heavy lifting', 'HIIT', 'Plyometrics', 'New PRs', 'Intense cardio']
+          suggestions: ['Heavy lifts', 'HIIT', 'New PRs', 'Pushing feels good']
         },
         nutrition: {
-          message: 'Higher carbs with lean protein. Fresh, light meals support rising energy.',
+          message: 'Higher whole carbs with lean protein. Fiber-rich foods support rising energy and your digestion is strong.',
           science: 'Estrogen enhances carbohydrate metabolism. Your body efficiently uses carbs for energy and muscle building.',
-          suggestions: ['Quinoa', 'Sweet potatoes', 'Chicken breast', 'Fresh vegetables', 'Smoothies']
+          suggestions: ['Kimchi & Kefir', 'Sweet potatoes', 'Chicken, Fish', 'Summer Rolls', 'steamed']
         },
         energy: {
           message: 'Rising energy and optimism. Great time for social activities and new projects.',
           science: 'Estrogen increases serotonin and dopamine production, boosting mood, motivation, and cognitive function.',
-          suggestions: ['Start new projects', 'Social events', 'Brainstorming', 'Networking']
+          suggestions: ['Start new projects', 'Social events', 'Dating', 'Networking']
         },
         fasting: {
-          message: 'Can handle longer fasts (16-18h) if that feels good to you.',
-          science: 'Higher estrogen improves insulin sensitivity, making fasting more comfortable and effective.',
-          suggestions: ['16-18h fasts', 'Listen to your body']
+          message: 'Do what feels good to you, listen to your body.',
+          science: 'Higher estrogen improves insulin sensitivity so fasting is tolerated, but pay attention to hunger cues.',
+          suggestions: ['Listen to your body', 'Nourish your activity']
         }
       },
       'Ovulatory': {
         training: {
           message: 'High intensity workouts and group classes. Peak performance window!',
           science: 'Estrogen peaks and testosterone rises. Pain tolerance is highest, and you have maximum strength and endurance.',
-          suggestions: ['HIIT', 'Group fitness', 'Compete with yourself', 'Max effort']
+          suggestions: ['I can do anything', 'HIIT', 'Group fitness', 'Compete with yourself']
         },
         nutrition: {
           message: 'Fibre and antioxidants. Your digestion is strong - enjoy raw veggies!',
           science: 'Estrogen supports gut motility and metabolism. Your body handles fibre and raw foods easily.',
-          suggestions: ['Raw salads', 'Cruciferous veggies', 'Berries', 'Nuts and seeds', 'Whole grains']
+          suggestions: ['Fatty fish', 'Berries', 'Colourful vegetables', 'Nuts and seeds', 'Whole grains']
         },
         energy: {
           message: 'Peak social energy! Schedule important meetings and social events now.',
-          science: 'Peak estrogen enhances communication skills, confidence, and emotional connection. You\'re at your most charismatic.',
-          suggestions: ['Important presentations', 'Networking events', 'Social gatherings', 'Public speaking']
+          science: 'Peak estrogen enhances communication skills, confidence, and emotional connection. You\'re at your most charismatic and pheromones are strong.',
+          suggestions: ['Networking events', 'Social gatherings', 'Safe sex', 'Dating', 'Public speaking']
         },
         fasting: {
           message: 'Flexible - your insulin sensitivity is optimal.',
@@ -177,6 +181,50 @@ const CycleApp = () => {
           message: 'Listen to hunger cues. Your body may need more frequent nourishment.',
           science: 'Progesterone increases appetite and metabolic rate. Fasting can trigger stress hormones and worsen PMS.',
           suggestions: ['Shorter windows', 'Eat regularly', 'Honour hunger', '12-14 hour max']
+        }
+      },
+      'Early Luteal': {
+        training: {
+          message: 'Moderate intensity works well. Pilates, swimming, barre, or steady cardio.',
+          science: 'Progesterone rises and body temperature increases slightly. You can still train well, but recovery takes a bit longer than follicular phase.',
+          suggestions: ['Pilates', 'Barre', 'Swimming', 'Moderate strength training', 'Steady cardio']
+        },
+        nutrition: {
+          message: 'Complex carbs with protein. Your appetite is increasing - this is normal.',
+          science: 'Metabolic rate rises by 100-300 calories per day. Your body genuinely needs more food as progesterone increases.',
+          suggestions: ['Quinoa bowls', 'Sweet potatoes', 'Salmon', 'Whole grain toast', 'Nut butters']
+        },
+        energy: {
+          message: 'Productive energy for completing tasks. Good time to finish what you started.',
+          science: 'Progesterone has a calming effect that can feel centring and focused. Less sparkle than ovulation, but steady.',
+          suggestions: ['Finish projects', 'Admin work', 'Organising', 'Small social gatherings']
+        },
+        fasting: {
+          message: 'Shorter windows (14-16h). Your body needs more fuel as metabolism rises.',
+          science: 'Progesterone increases metabolic rate and appetite. Extended fasting may not feel as comfortable.',
+          suggestions: ['14-16 hour window', 'Listen to hunger', 'Eat regularly']
+        }
+      },
+      'Late Luteal': {
+        training: {
+          message: 'Gentle movement - walking, stretching, restorative yoga. Rest is productive.',
+          science: 'Progesterone drops sharply, which can affect energy and mood. Your body is preparing for menstruation. Intense training adds stress.',
+          suggestions: ['Walking', 'Gentle yoga', 'Stretching', 'Light pilates', 'Rest days']
+        },
+        nutrition: {
+          message: 'Magnesium-rich foods, complex carbs, and honouring cravings. You need MORE food, not less.',
+          science: 'Serotonin drops with declining hormones, triggering carb cravings. Your metabolic rate is still elevated. Restricting food worsens PMS significantly.',
+          suggestions: ['Dark chocolate', 'Oatmeal', 'Pumpkin seeds', 'Bananas', 'Whole grains', 'Satisfying meals']
+        },
+        energy: {
+          message: 'Low energy and irritability are normal. PMS is real. Be gentle with yourself.',
+          science: 'Sharp hormone drops affect neurotransmitters. Your tolerance for stress decreases - this isn\'t weakness, it\'s biology.',
+          suggestions: ['Say no to obligations', 'Rest', 'Solo time', 'Gentle self-care', 'Early bedtime']
+        },
+        fasting: {
+          message: 'Skip fasting this week. Eat regularly to stabilise mood and energy.',
+          science: 'Fasting triggers cortisol release. With hormones already dropping, this compounds stress and worsens PMS dramatically.',
+          suggestions: ['No fasting', 'Eat when hungry', 'Regular meals', 'Nourishment first']
         }
       }
     };
@@ -224,12 +272,12 @@ const CycleApp = () => {
         };
       }
 
-      if (energy === 'low' && phase === 'Luteal') {
+      if (energy === 'low' && (phase === 'Luteal' || phase === 'Late Luteal' || phase === 'Early Luteal')) {
         guidance = {
           ...guidance,
           training: {
             ...guidance.training,
-            message: 'Low energy in late luteal is completely normal. Light stretching or rest.',
+            message: 'Low energy in luteal phase is completely normal. Light stretching or rest.',
             modifier: 'Progesterone naturally lowers energy. This is your body preparing for menstruation - honour it.'
           }
         };
@@ -714,7 +762,7 @@ const CycleApp = () => {
               </p>
               
               <p>
-                No shame, just practical guidance on how to work <em>with</em> your cycle rather than against it, so you won't be doubled over cramping when Aunt Flo next comes knocking.
+                No shame, just practical guidance on how to work <em>with</em> your cycle rather than against it, so you won't be doubled over when Aunt Flo next comes knocking.
               </p>
             </div>
 
@@ -726,7 +774,7 @@ const CycleApp = () => {
                 <span>A note on privacy</span>
               </h3>
               <p className="text-sm text-indigo-900 leading-relaxed">
-                Your data never leaves your device. Your body, your data, your choice. Just remember to use the same device each time. Miriam operates on local device storage only, so your logs live where you left them.
+                Your data never leaves your device. Your body, your data, your choice. Just remember to use the same device each time as Miriam operates on local device storage only, so your logs live where you left them.
               </p>
             </div>
           </div>
@@ -1192,11 +1240,16 @@ const CycleApp = () => {
           phaseName = 'Ovulatory';
           phaseColor = 'bg-[#E08C34]';
           phaseIcon = '🌕';
-        } else {
-          phase = 'luteal';
-          phaseName = 'Luteal';
+        } else if (cycleDay <= 23) {
+          phase = 'early-luteal';
+          phaseName = 'Early Luteal';
           phaseColor = 'bg-[#E9D8E6]';
           phaseIcon = '🌖';
+        } else {
+          phase = 'late-luteal';
+          phaseName = 'Late Luteal';
+          phaseColor = 'bg-[#D4B5D0]';
+          phaseIcon = '🌗';
         }
         
         days.push({
@@ -1224,7 +1277,8 @@ const CycleApp = () => {
       menstrual: { start: 1, end: userData.profile.averagePeriodLength },
       follicular: { start: userData.profile.averagePeriodLength + 1, end: 13 },
       ovulatory: { start: 14, end: 16 },
-      luteal: { start: 17, end: userData.profile.averageCycleLength }
+      earlyLuteal: { start: 17, end: 23 },
+      lateLuteal: { start: 24, end: userData.profile.averageCycleLength }
     };
     
     return (
@@ -1245,37 +1299,29 @@ const CycleApp = () => {
         </div>
 
         <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
-          {/* Phase Legend */}
-          <div className="bg-white rounded-2xl p-5 shadow-md border border-indigo-100">
-            <h3 className="font-bold text-indigo-900 mb-3">Phase Guide</h3>
-            <div className="grid grid-cols-2 gap-3">
+          {/* Phase Color Key - Compact */}
+          <div className="bg-white rounded-2xl p-4 shadow-md border border-indigo-100">
+            <h3 className="font-bold text-indigo-900 mb-3 text-sm">Cycle Phases</h3>
+            <div className="flex flex-wrap gap-3">
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#8C48AE'}}></div>
-                <div className="text-sm">
-                  <p className="font-semibold text-indigo-900">Menstrual</p>
-                  <p className="text-gray-600 text-xs">Days {phaseRanges.menstrual.start}-{phaseRanges.menstrual.end}</p>
-                </div>
+                <div className="w-4 h-4 rounded" style={{backgroundColor: '#8C48AE'}}></div>
+                <p className="text-xs text-gray-700">Menstrual (1-{userData.profile.averagePeriodLength})</p>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#FFDAB9'}}></div>
-                <div className="text-sm">
-                  <p className="font-semibold text-indigo-900">Follicular</p>
-                  <p className="text-gray-600 text-xs">Days {phaseRanges.follicular.start}-{phaseRanges.follicular.end}</p>
-                </div>
+                <div className="w-4 h-4 rounded" style={{backgroundColor: '#FFDAB9'}}></div>
+                <p className="text-xs text-gray-700">Follicular ({userData.profile.averagePeriodLength + 1}-13)</p>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#E08C34'}}></div>
-                <div className="text-sm">
-                  <p className="font-semibold text-indigo-900">Ovulatory</p>
-                  <p className="text-gray-600 text-xs">Days {phaseRanges.ovulatory.start}-{phaseRanges.ovulatory.end}</p>
-                </div>
+                <div className="w-4 h-4 rounded" style={{backgroundColor: '#E08C34'}}></div>
+                <p className="text-xs text-gray-700">Ovulatory (14-16)</p>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg" style={{backgroundColor: '#E9D8E6'}}></div>
-                <div className="text-sm">
-                  <p className="font-semibold text-indigo-900">Luteal</p>
-                  <p className="text-gray-600 text-xs">Days {phaseRanges.luteal.start}-{phaseRanges.luteal.end}</p>
-                </div>
+                <div className="w-4 h-4 rounded" style={{backgroundColor: '#E9D8E6'}}></div>
+                <p className="text-xs text-gray-700">Early Luteal (17-23)</p>
+              </div>
+              <div className="flex items-center space-x-2">
+                <div className="w-4 h-4 rounded" style={{backgroundColor: '#D4B5D0'}}></div>
+                <p className="text-xs text-gray-700">Late Luteal (24-{userData.profile.averageCycleLength})</p>
               </div>
             </div>
           </div>
@@ -1288,10 +1334,12 @@ const CycleApp = () => {
                   'menstrual': '#8C48AE',
                   'follicular': '#FFDAB9', 
                   'ovulatory': '#E08C34',
-                  'luteal': '#E9D8E6'
+                  'early-luteal': '#E9D8E6',
+                  'late-luteal': '#D4B5D0',
+                  'luteal': '#E9D8E6'  // fallback for backward compatibility
                 };
                 
-                const textColor = (day.phase === 'menstrual' || day.phase === 'ovulatory') ? '#FFFFFF' : '#1F2937';
+                const textColor = (day.phase === 'menstrual' || day.phase === 'ovulatory' || day.phase === 'late-luteal') ? '#FFFFFF' : '#1F2937';
                 
                 return (
                   <div 
@@ -1301,26 +1349,31 @@ const CycleApp = () => {
                       color: textColor
                     }}
                     className={`
-                      rounded-xl p-3 relative
+                      rounded-xl p-2 relative min-h-[70px] flex items-center justify-center
                       ${day.isToday ? 'ring-4 ring-orange-400 shadow-xl scale-105' : 'shadow-md'}
                       ${day.isPast ? 'opacity-60' : ''}
                       transition-all
                     `}
                   >
-                    <div className="text-center">
-                      <p className="text-xs font-medium opacity-90">{day.dayName}</p>
-                      <p className="text-xl font-bold">{day.dayNum}</p>
-                      <p className="text-xs opacity-75">{day.monthShort}</p>
-                      <p className="text-xs font-semibold mt-1">Day {day.cycleDay}</p>
+                    {/* Cycle day badge on left */}
+                    <div className="absolute left-1 top-1 text-xs font-semibold opacity-70">
+                      {day.cycleDay}
                     </div>
+                    
+                    {/* Main content - date and month */}
+                    <div className="text-center">
+                      <p className="text-2xl font-bold leading-none">{day.dayNum}</p>
+                      <p className="text-xs mt-0.5 opacity-75">{day.monthShort}</p>
+                    </div>
+                    
                     {day.hasLog && (
-                      <div className="absolute top-1 right-1">
+                      <div className="absolute top-1.5 right-1.5">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                       </div>
                     )}
                     {day.isToday && (
                       <div className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">
-                        TODAY
+                        NOW
                       </div>
                     )}
                   </div>
@@ -1450,6 +1503,8 @@ const CycleApp = () => {
                   {phaseInfo.phase === 'Menstrual' && '🌑'}
                   {phaseInfo.phase === 'Follicular' && '🌒'}
                   {phaseInfo.phase === 'Ovulatory' && '🌕'}
+                  {phaseInfo.phase === 'Early Luteal' && '🌖'}
+                  {phaseInfo.phase === 'Late Luteal' && '🌗'}
                   {phaseInfo.phase === 'Luteal' && '🌖'}
                 </div>
               </div>
