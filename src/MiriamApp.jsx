@@ -146,7 +146,7 @@ const CycleApp = () => {
           suggestions: ['I can do anything', 'HIIT', 'Group fitness', 'Compete with yourself']
         },
         nutrition: {
-          message: 'Fibre and antioxidants. Your digestion is strong - enjoy raw veggies!',
+          message: 'Fibre and antioxidants. Your digestion is strong 💪 enjoy raw veggies!',
           science: 'Estrogen supports gut motility and metabolism. Your body handles fibre and raw foods easily.',
           suggestions: ['Fatty fish', 'Berries', 'Colourful vegetables', 'Nuts and seeds', 'Whole grains']
         },
@@ -156,16 +156,16 @@ const CycleApp = () => {
           suggestions: ['Networking events', 'Social gatherings', 'Safe sex', 'Dating', 'Public speaking']
         },
         fasting: {
-          message: 'Flexible - your insulin sensitivity is optimal.',
+          message: 'Flexible, your insulin sensitivity is optimal.',
           science: 'Peak estrogen optimises metabolic flexibility. You can fast or eat more freely.',
-          suggestions: ['Flexible fasting', 'Intuitive eating', 'Any window works']
+          suggestions: ['Intuitive eating', 'Any window works']
         }
       },
       'Luteal': {
         training: {
-          message: 'Moderate intensity - pilates, swimming, or steady cardio work well.',
+          message: 'Moderate intensity movement, pilates, swimming, or steady cardio work well.',
           science: 'Progesterone rises, which can increase body temperature and reduce exercise tolerance. Focus on sustainable movement.',
-          suggestions: ['Pilates', 'Swimming', 'Barre', 'Moderate cardio', 'Strength maintenance']
+          suggestions: ['Pilates', 'Swimming', 'Moderate cardio', 'Strength maintenance']
         },
         nutrition: {
           message: 'Complex carbs and magnesium-rich foods. Honour cravings mindfully.',
@@ -180,19 +180,19 @@ const CycleApp = () => {
         fasting: {
           message: 'Listen to hunger cues. Your body may need more frequent nourishment.',
           science: 'Progesterone increases appetite and metabolic rate. Fasting can trigger stress hormones and worsen PMS.',
-          suggestions: ['Shorter windows', 'Eat regularly', 'Honour hunger', '12-14 hour max']
+          suggestions: ['Shorter windows', 'Eat regularly', 'Honour hunger']
         }
       },
       'Early Luteal': {
         training: {
           message: 'Moderate intensity works well. Pilates, swimming, barre, or steady cardio.',
           science: 'Progesterone rises and body temperature increases slightly. You can still train well, but recovery takes a bit longer than follicular phase.',
-          suggestions: ['Pilates', 'Barre', 'Swimming', 'Moderate strength training', 'Steady cardio']
+          suggestions: ['Pilates', 'Swimming', 'Moderate strength training', 'Steady cardio']
         },
         nutrition: {
-          message: 'Complex carbs with protein. Your appetite is increasing - this is normal.',
+          message: 'Complex carbs with protein. Your appetite is increasing which is normal.',
           science: 'Metabolic rate rises by 100-300 calories per day. Your body genuinely needs more food as progesterone increases.',
-          suggestions: ['Quinoa bowls', 'Sweet potatoes', 'Salmon', 'Whole grain toast', 'Nut butters']
+          suggestions: ['Whole grains', 'Potatoes', 'Salmon', 'Spinach', 'Nut butters']
         },
         energy: {
           message: 'Productive energy for completing tasks. Good time to finish what you started.',
@@ -200,31 +200,31 @@ const CycleApp = () => {
           suggestions: ['Finish projects', 'Admin work', 'Organising', 'Small social gatherings']
         },
         fasting: {
-          message: 'Shorter windows (14-16h). Your body needs more fuel as metabolism rises.',
-          science: 'Progesterone increases metabolic rate and appetite. Extended fasting may not feel as comfortable.',
-          suggestions: ['14-16 hour window', 'Listen to hunger', 'Eat regularly']
+          message: 'Your body needs more fuel as metabolism rises.',
+          science: 'Progesterone increases metabolic rate and appetite. Not honouring hunger may not feel comfortable.',
+          suggestions: ['Listen to hunger', 'Eat regularly']
         }
       },
       'Late Luteal': {
         training: {
           message: 'Gentle movement - walking, stretching, restorative yoga. Rest is productive.',
           science: 'Progesterone drops sharply, which can affect energy and mood. Your body is preparing for menstruation. Intense training adds stress.',
-          suggestions: ['Walking', 'Gentle yoga', 'Stretching', 'Light pilates', 'Rest days']
+          suggestions: ['Walking', 'Yin yoga', 'Stretching', 'Rest days']
         },
         nutrition: {
           message: 'Magnesium-rich foods, complex carbs, and honouring cravings. You need MORE food, not less.',
           science: 'Serotonin drops with declining hormones, triggering carb cravings. Your metabolic rate is still elevated. Restricting food worsens PMS significantly.',
-          suggestions: ['Dark chocolate', 'Oatmeal', 'Pumpkin seeds', 'Bananas', 'Whole grains', 'Satisfying meals']
+          suggestions: ['Chickpeas', 'Dates', 'Grounding foods', 'Nothing cold', 'Dark chocolate', 'Satisfying meals']
         },
         energy: {
           message: 'Low energy and irritability are normal. PMS is real. Be gentle with yourself.',
-          science: 'Sharp hormone drops affect neurotransmitters. Your tolerance for stress decreases - this isn\'t weakness, it\'s biology.',
+          science: 'Sharp hormone drops affect neurotransmitters. Your tolerance for stress decreases biologically.',
           suggestions: ['Say no to obligations', 'Rest', 'Solo time', 'Gentle self-care', 'Early bedtime']
         },
         fasting: {
-          message: 'Skip fasting this week. Eat regularly to stabilise mood and energy.',
+          message: 'Eat regularly to stabilise mood, blood sugar and energy.',
           science: 'Fasting triggers cortisol release. With hormones already dropping, this compounds stress and worsens PMS dramatically.',
-          suggestions: ['No fasting', 'Eat when hungry', 'Regular meals', 'Nourishment first']
+          suggestions: ['Eat when hungry', 'Regular meals', 'Nourishment first', 'No fasting']
         }
       }
     };
