@@ -817,7 +817,7 @@ const CycleApp = () => {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+        <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
           <div className="bg-white rounded-3xl p-6 shadow-lg border border-indigo-100 space-y-6">
             {existingLog && (
               <div className="bg-green-50 border border-green-200 rounded-xl p-4">
@@ -945,7 +945,7 @@ const CycleApp = () => {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+        <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
           {/* Main Content */}
           <div className="bg-white rounded-3xl p-8 shadow-lg border border-indigo-100 space-y-6">
             <div className="text-center">
@@ -1158,7 +1158,7 @@ const CycleApp = () => {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+        <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
           {/* Data Stats */}
           <div className="bg-white rounded-3xl p-6 shadow-lg border border-indigo-100">
             <h2 className="text-lg font-bold text-indigo-900 mb-4">Your Progress</h2>
@@ -1515,49 +1515,49 @@ const CycleApp = () => {
 
         <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
           {/* Phase Color Key - Compact */}
-          <div className="bg-white rounded-2xl p-4 shadow-md border border-indigo-100">
-            <h3 className="font-bold text-indigo-900 mb-3 text-sm">Cycle Phases</h3>
+          <div className="bg-white rounded-2xl p-4 shadow-md border border-indigo-100" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
+            <h3 className="font-bold text-indigo-900 mb-3 text-xs">Cycle Phases</h3>
             <div className="flex flex-wrap gap-3">
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 rounded" style={{backgroundColor: '#8C48AE'}}></div>
-                <p className="text-xs text-gray-700">Menstrual (1-{userData.profile.averagePeriodLength})</p>
+                <p className="text-[10px] text-gray-700">Menstrual (1-{userData.profile.averagePeriodLength})</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 rounded" style={{backgroundColor: '#FFDAB9'}}></div>
-                <p className="text-xs text-gray-700">Follicular ({userData.profile.averagePeriodLength + 1}-13)</p>
+                <p className="text-[10px] text-gray-700">Follicular ({userData.profile.averagePeriodLength + 1}-13)</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 rounded" style={{backgroundColor: '#E08C34'}}></div>
-                <p className="text-xs text-gray-700">Ovulatory (14-16)</p>
+                <p className="text-[10px] text-gray-700">Ovulatory (14-16)</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 rounded" style={{backgroundColor: '#E9D8E6'}}></div>
-                <p className="text-xs text-gray-700">Early Luteal (17-23)</p>
+                <p className="text-[10px] text-gray-700">Early Luteal (17-23)</p>
               </div>
               <div className="flex items-center space-x-2">
                 <div className="w-4 h-4 rounded" style={{backgroundColor: '#D4B5D0'}}></div>
-                <p className="text-xs text-gray-700">Late Luteal (24-{userData.profile.averageCycleLength})</p>
+                <p className="text-[10px] text-gray-700">Late Luteal (24-{userData.profile.averageCycleLength})</p>
               </div>
             </div>
           </div>
 
           {/* Calendar Grid */}
-          <div className="bg-white rounded-2xl p-5 shadow-md border border-indigo-100">
+          <div className="bg-white rounded-2xl p-5 shadow-md border border-indigo-100" style={{fontFamily: 'system-ui, -apple-system, sans-serif'}}>
             <div className="grid grid-cols-7 gap-2">
               {cycleDays.map((day) => {
                 const bgColors = {
                   'menstrual': '#8C48AE',
-                  'follicular': '#FFDAB9', 
+                  'follicular': '#FFDAB9',
                   'ovulatory': '#E08C34',
                   'early-luteal': '#E9D8E6',
                   'late-luteal': '#D4B5D0',
                   'luteal': '#E9D8E6'  // fallback for backward compatibility
                 };
-                
+
                 const textColor = (day.phase === 'menstrual' || day.phase === 'ovulatory' || day.phase === 'late-luteal') ? '#FFFFFF' : '#1F2937';
-                
+
                 return (
-                  <div 
+                  <div
                     key={day.cycleDay}
                     style={{
                       backgroundColor: bgColors[day.phase],
@@ -1571,23 +1571,23 @@ const CycleApp = () => {
                     `}
                   >
                     {/* Cycle day badge on left */}
-                    <div className="absolute left-1 top-1 text-xs font-semibold opacity-70">
+                    <div className="absolute left-1 top-1 text-[10px] font-semibold opacity-70">
                       {day.cycleDay}
                     </div>
-                    
+
                     {/* Main content - date and month */}
                     <div className="text-center">
-                      <p className="text-2xl font-bold leading-none">{day.dayNum}</p>
-                      <p className="text-xs mt-0.5 opacity-75">{day.monthShort}</p>
+                      <p className="text-xl font-bold leading-none">{day.dayNum}</p>
+                      <p className="text-[10px] mt-0.5 opacity-75">{day.monthShort}</p>
                     </div>
-                    
+
                     {day.hasLog && (
                       <div className="absolute top-1.5 right-1.5">
                         <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                       </div>
                     )}
                     {day.isToday && (
-                      <div className="absolute -top-1 -right-1 bg-orange-500 text-white text-xs px-2 py-0.5 rounded-full font-bold">
+                      <div className="absolute -top-1 -right-1 bg-orange-500 text-white text-[10px] px-2 py-0.5 rounded-full font-bold">
                         NOW
                       </div>
                     )}
@@ -1865,7 +1865,7 @@ const CycleApp = () => {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+        <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
           <div className="text-center space-y-2">
             <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">Learn</h2>
             <p className="text-gray-600">Understand your cycle, phase by phase</p>
@@ -1887,7 +1887,6 @@ const CycleApp = () => {
                         <h3 className="text-lg font-bold text-indigo-900">{guide.title}</h3>
                         <p className="text-sm text-indigo-600 font-medium">{guide.subtitle}</p>
                         <p className="text-xs text-gray-500 mt-1">{guide.days}</p>
-                        <p className="text-sm text-gray-600 mt-2 line-clamp-2">{guide.overview.slice(0, 100)}...</p>
                       </div>
                     </div>
                     <span className="text-indigo-400 text-xl ml-2">›</span>
@@ -1936,7 +1935,7 @@ const CycleApp = () => {
           </div>
         </div>
 
-        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+        <div className="max-w-4xl mx-auto px-6 py-8 space-y-6">
           {/* Hero card */}
           <div className={`bg-gradient-to-r ${guide.color} rounded-3xl p-8 text-white shadow-xl`}>
             <div className="flex items-center justify-between">
