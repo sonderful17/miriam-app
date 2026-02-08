@@ -42,7 +42,7 @@ Your reproductive health data is sensitive. Miriam is designed with privacy at i
 
 ### For Users
 
-1. Visit [your-netlify-link-here](https://miriamcycle.netlify.app/)
+1. Visit [https://miriamcycle.netlify.app/](https://miriamcycle.netlify.app/)
 2. Complete the onboarding flow (last period date, cycle length)
 3. Start logging your daily data
 4. Get personalised guidance based on your cycle phase based on log inputs
