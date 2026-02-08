@@ -9,7 +9,8 @@ document.head.appendChild(fontLink);
 const CycleApp = () => {
   const [userData, setUserData] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
-  const [currentView, setCurrentView] = useState('today'); // 'today', 'cycle', 'log', 'me', 'about'
+  const [currentView, setCurrentView] = useState('today'); // 'today', 'cycle', 'log', 'learn', 'me', 'about'
+  const [learnPhase, setLearnPhase] = useState(null);
   const [onboardingData, setOnboardingData] = useState({
     lastPeriodStart: '',
     lastPeriodEnd: '',
@@ -296,6 +297,280 @@ const CycleApp = () => {
     }
 
     return guidance;
+  };
+
+  // Phase guide content for Learn tab
+  const phaseGuides = {
+    Menstrual: {
+      title: 'Menstrual Phase',
+      subtitle: 'Inner Winter',
+      icon: '🌑',
+      color: 'from-indigo-800 to-purple-900',
+      cardBg: 'bg-gradient-to-br from-purple-100 to-indigo-100',
+      days: 'Days 1–5',
+      overview: 'Estrogen and progesterone drop to their lowest levels, triggering menstruation. Your body sheds the uterine lining built up during the previous cycle. Your basal metabolic rate is at its lowest point.',
+      sections: [
+        {
+          title: 'How You Might Feel',
+          icon: '💭',
+          summary: '• Lower energy and need for rest\n• Inward, reflective mood\n• Possible cramping, lower back pain, headaches\n• Less social energy\n• Relief once bleeding starts',
+          details: 'Low hormone levels affect neurotransmitter production (serotonin, dopamine). Prostaglandins cause uterine contractions, which can trigger cramping and inflammation throughout the body.',
+        },
+        {
+          title: 'Training & Movement',
+          icon: '🏃‍♀️',
+          summary: 'What works well: Gentle yoga (restorative or yin), walking in nature, stretching and mobility work, light swimming, or complete rest.\n\nApproach carefully: High-intensity exercise, heavy lifting, long endurance efforts.',
+          details: 'Pain tolerance is lower, core temperature is lower, overall energy is reduced, and inflammation may be elevated if cramping is present.\n\nTCM views this as the "Blood phase" — your body is releasing and cleansing. Gentle movement helps Qi circulate without depleting it. Ayurveda notes Vata is dominant — you need grounding, not depletion.\n\nMany people find movement helps cramping (endorphins are natural pain relievers), but pushing too hard backfires. Listen to your body.',
+          suggestions: ['Restorative yoga', 'Walking in nature', 'Stretching', 'Light swimming', 'Rest days'],
+        },
+        {
+          title: 'Nutrition',
+          icon: '🥗',
+          summary: 'Prioritise: Iron-rich foods (red meat, lentils, dark leafy greens, pumpkin seeds), anti-inflammatory foods (ginger, turmeric, fatty fish, berries), magnesium (dark chocolate, almonds, avocado), and warming, easy-to-digest meals.',
+          details: 'You\'re losing iron through bleeding, especially if flow is heavy. Inflammation may be elevated and digestive capacity may be lower.\n\nConsider limiting caffeine (can worsen cramping), high-sodium processed foods (increases bloating), and alcohol (affects hormone clearance).\n\nTCM recommends building Blood with bone broth, red dates, goji berries, and warming foods. Ayurveda suggests Vata-calming foods: warm, moist, grounding — cooked grains, root vegetables, ghee.',
+          suggestions: ['Leafy greens', 'Ginger tea', 'Bone broth', 'Dark chocolate', 'Warming soups'],
+        },
+        {
+          title: 'Energy & Social',
+          icon: '⚡',
+          summary: '• Saying no to social obligations without guilt\n• Journaling, creative reflection\n• Cozy, low-key activities\n• Time alone or with very close friends\n• Early bedtimes\n• Gentle self-compassion',
+          details: 'Low estrogen means lower serotonin and dopamine. Your body\'s natural rhythm is inviting introspection and rest. This is your body\'s natural time to reflect, process, and restore.',
+        },
+        {
+          title: 'Meal Timing',
+          icon: '🕐',
+          summary: '• Eat when hungry — honour your body\'s signals\n• Regular meals may help stabilise energy and mood\n• Focus on nourishment, not restriction',
+          details: 'Your body needs consistent fuel. Blood sugar regulation may be more challenging with low hormones. Fasting can trigger cortisol release when your body is already depleted.',
+        },
+        {
+          title: 'Common Experiences',
+          icon: '📋',
+          summary: '• Cramping from prostaglandins\n• Heavy first day (the body\'s "big release")\n• Lower back pain\n• Headaches from estrogen withdrawal\n• Brain fog\n• Relief/release once bleeding starts',
+          details: 'Cramping: Magnesium, heat, gentle movement, and anti-inflammatory foods help. Headaches: Estrogen withdrawal can trigger migraines in susceptible people. Brain fog: Lower hormones can temporarily affect cognitive function. Many people feel emotional or physical relief once bleeding starts, especially if PMS was intense.',
+        },
+      ],
+      keyTakeaways: [
+        'Rest is productive — your body is doing important work',
+        'Iron-rich and anti-inflammatory foods support recovery',
+        'Gentle movement helps, but pushing too hard backfires',
+      ],
+    },
+    Follicular: {
+      title: 'Follicular Phase',
+      subtitle: 'Inner Spring',
+      icon: '🌒',
+      color: 'from-indigo-600 to-purple-700',
+      cardBg: 'bg-gradient-to-br from-amber-50 to-orange-100',
+      days: 'Days 6–13',
+      overview: 'Estrogen rises steadily from low to moderate-high levels. FSH causes several ovarian follicles to mature. Rising estrogen increases serotonin, dopamine, and acetylcholine production, improving insulin sensitivity and enhancing neuroplasticity. This is your brain\'s "spring".',
+      sections: [
+        {
+          title: 'How You Might Feel',
+          icon: '💭',
+          summary: '• Energy rising and rebuilding\n• Optimistic, motivated mood\n• Mental clarity improving\n• Creative and social energy returning\n• Ready to start new projects',
+          details: 'Rising estrogen increases serotonin, dopamine, and acetylcholine production. It improves insulin sensitivity, enhances verbal skills and memory, and increases neuroplasticity.',
+        },
+        {
+          title: 'Training & Movement',
+          icon: '🏃‍♀️',
+          summary: 'This is your power window! Estrogen improves muscle protein synthesis, pain tolerance increases, recovery is faster, and you can handle training volume better.\n\nWhat works well: Heavy strength training, HIIT, plyometrics, learning new skills, increasing training volume.',
+          details: 'If you\'re going to add weight, reps, or intensity to your training, this is the phase to do it. Tendon and ligament strength improves.\n\nTCM views this as the Yin-building phase — movement should build strength and vitality. Ayurveda notes Kapha\'s building qualities dominate — your body is strong and can handle more.',
+          suggestions: ['Heavy lifts', 'HIIT', 'New PRs', 'Plyometrics', 'Longer cardio'],
+        },
+        {
+          title: 'Nutrition',
+          icon: '🥗',
+          summary: 'Prioritise: Quality carbohydrates (quinoa, sweet potatoes, oats), lean proteins (chicken, fish, eggs, legumes), fresh vegetables, fermented foods (kimchi, kefir), and cruciferous vegetables.',
+          details: 'Insulin sensitivity is high — your body uses carbohydrates efficiently. Metabolic rate is lower compared to luteal phase. Your body is rebuilding after menstruation and digestion is typically strong.\n\nNutrient focus: B vitamins (energy production), zinc (supports follicle development), antioxidants (berries, leafy greens).\n\nTCM recommends building Yin and Blood with lighter cooking methods. Ayurveda suggests Kapha-balancing: light, fresh, not overly heavy.',
+          suggestions: ['Quinoa', 'Sweet potatoes', 'Kimchi & kefir', 'Cruciferous veg', 'Lean protein'],
+        },
+        {
+          title: 'Energy & Social',
+          icon: '⚡',
+          summary: '• Starting new projects or initiatives\n• Social gatherings and networking\n• Creative brainstorming\n• Learning new skills\n• Important conversations\n• Scheduling meetings or presentations',
+          details: 'Rising estrogen boosts neurotransmitters associated with motivation, connection, and optimism. Your verbal skills, memory, and social cognition are enhanced. This is your planning and initiation phase — set your intentions and start building momentum.',
+        },
+        {
+          title: 'Meal Timing',
+          icon: '🕐',
+          summary: '• Your body can handle flexible meal frequency\n• Still listen to hunger cues\n• Good time to experiment with meal timing if curious',
+          details: 'High insulin sensitivity means your body efficiently manages glucose. Your metabolism is at its most flexible and your body can switch between fuel sources easily. Many people find fasting feels easier during follicular phase — but "can tolerate" doesn\'t mean "should do".',
+        },
+        {
+          title: 'Common Experiences',
+          icon: '📋',
+          summary: '• Increased libido\n• Clearer skin\n• Better sleep\n• Heightened senses\n• Optimism bias (may take on too much)\n• Cervical fluid changes',
+          details: 'Rising estrogen and testosterone increase sex drive. Estrogen improves skin quality. Taste, smell, and hearing may be enhanced. You may take on too much with the optimism bias — pace yourself. Discharge increases and becomes clearer as ovulation approaches.',
+        },
+      ],
+      keyTakeaways: [
+        'This is your power window for training — push for PRs',
+        'Rising estrogen boosts mood, energy, and cognitive function',
+        'Your body efficiently uses carbohydrates — fuel your workouts',
+      ],
+    },
+    Ovulatory: {
+      title: 'Ovulatory Phase',
+      subtitle: 'Inner Summer',
+      icon: '🌕',
+      color: 'from-orange-500 to-orange-700',
+      cardBg: 'bg-gradient-to-br from-orange-100 to-red-100',
+      days: 'Days 14–16',
+      overview: 'Estrogen peaks, LH surges triggering ovulation, and testosterone rises. Peak estrogen enhances communication centres in the brain, increases dopamine and serotonin, and heightens emotional attunement. You\'re biologically primed for connection and performance.',
+      sections: [
+        {
+          title: 'How You Might Feel',
+          icon: '💭',
+          summary: '• Peak energy and confidence\n• Maximum social and communication skills\n• Heightened senses and awareness\n• Strong, capable, charismatic\n• Elevated mood and libido',
+          details: 'Peak estrogen enhances communication centres in the brain, increases dopamine and serotonin, and heightens emotional attunement. Testosterone increases strength and assertiveness.',
+        },
+        {
+          title: 'Training & Movement',
+          icon: '🏃‍♀️',
+          summary: 'Peak performance window! Maximum pain tolerance, peak strength and power output, highest testosterone of your entire cycle, optimal coordination and reaction time.\n\nGo for: Maximum effort workouts, HIIT, heavy compound lifts, competitive sports, testing your limits.',
+          details: 'If you\'re going to do something that scares you physically, this is the time. Your body can handle it.\n\nTCM sees peak Yang energy — vigorous movement is appropriate. Ayurveda notes Pitta dominance — you have heat, intensity, and drive. Channel it into strong practice but don\'t overheat.\n\nWorkouts that felt hard during menstruation feel easy now.',
+          suggestions: ['Max effort workouts', 'HIIT & Tabata', 'Heavy compound lifts', 'Group fitness', 'Test your limits'],
+        },
+        {
+          title: 'Nutrition',
+          icon: '🥗',
+          summary: 'Prioritise: Fibre-rich foods (raw vegetables, fruits, whole grains), antioxidants (berries, colourful vegetables), omega-3s (fatty fish, walnuts, flax), cruciferous vegetables, and lighter proteins.',
+          details: 'Metabolism is transitioning and starting to rise. Insulin sensitivity remains good. Digestion is strong — your gut can handle variety and estrogen supports gut motility.\n\nNutrient focus: Vitamin C (supports progesterone production), glutathione-rich foods (asparagus, avocado), B vitamins.\n\nTCM recommends cooling foods to balance peak Yang. Ayurveda suggests Pitta-balancing: cooling, sweet, bitter — coconut, cilantro, cucumber, mint.',
+          suggestions: ['Raw veggies & salads', 'Berries', 'Fatty fish', 'Colourful vegetables', 'Fresh fruits'],
+        },
+        {
+          title: 'Energy & Social',
+          icon: '⚡',
+          summary: '• Social events and parties\n• Date nights\n• Creative collaboration\n• Networking events or conferences\n• Leading meetings\n• Public speaking',
+          details: 'Peak estrogen enhances verbal fluency, emotional intelligence, and social bonding. You\'re at your most charismatic and confident. Schedule high-stakes social or professional events during this window — you\'re naturally persuasive, articulate, and confident.',
+        },
+        {
+          title: 'Meal Timing',
+          icon: '🕐',
+          summary: '• Intuitive eating works well now\n• Your body will signal clearly when it needs fuel\n• Complete flexibility — do what feels good',
+          details: 'Your metabolic flexibility is at its peak. You can eat frequently or less often — your body adapts easily. Hunger cues are clear and easy to honour during this phase. Trust your body.',
+        },
+        {
+          title: 'Common Experiences',
+          icon: '📋',
+          summary: '• Peak libido\n• Heightened attraction (pheromones!)\n• Clear, stretchy cervical fluid\n• Boundless energy\n• Confidence and social magnetism',
+          details: 'Biological drive for connection is highest. You may find others more attractive — and they find you more attractive too (pheromones). Conversations flow easily. Even if you don\'t sleep as much, you feel good and capable of anything.',
+        },
+      ],
+      keyTakeaways: [
+        'Peak performance — test your limits and go for PRs',
+        'You\'re at your most charismatic and confident',
+        'Schedule important social and professional events now',
+      ],
+    },
+    'Early Luteal': {
+      title: 'Early Luteal Phase',
+      subtitle: 'Inner Early Autumn',
+      icon: '🌖',
+      color: 'from-purple-600 to-indigo-700',
+      cardBg: 'bg-gradient-to-br from-purple-50 to-indigo-100',
+      days: 'Days 17–23',
+      overview: 'Progesterone begins rising after ovulation and climbs steadily. Estrogen rises again (secondary peak) but stays lower than ovulation. Both hormones are elevated together. Progesterone has a calming, slightly sedating effect and raises body temperature, increasing metabolic rate by 100–300 calories per day.',
+      sections: [
+        {
+          title: 'How You Might Feel',
+          icon: '💭',
+          summary: '• Energy is still good, just moderated from ovulation peak\n• Productive, task-oriented focus\n• Appetite starts increasing\n• Mood is steady, perhaps more introspective\n• Still capable and functional',
+          details: 'Progesterone has a calming, slightly sedating effect — it converts to allopregnanolone, a GABA-like compound. It raises body temperature slightly and increases metabolic rate by 100–300 calories per day. You\'re still riding some estrogen benefits, so this phase can feel quite stable and productive.',
+        },
+        {
+          title: 'Training & Movement',
+          icon: '🏃‍♀️',
+          summary: 'What works well: Moderate-intensity strength training, pilates or barre classes, swimming, steady-state cardio, power walking or hiking, cycling at moderate pace.\n\nApproach carefully: Very long endurance efforts, back-to-back sessions, training in very hot conditions.',
+          details: 'Body temperature rises slightly (progesterone effect). Recovery takes a bit longer than follicular/ovulatory. You may overheat more easily during workouts. Strength maintenance is very doable — not quite peak performance, but still strong.\n\nTCM: Yang is still present but Qi begins to consolidate. The expansive energy of ovulation transitions to a more focused, inward-moving quality. Moderate movement supports smooth Qi flow.\n\nAyurveda: Transitioning from Pitta to Vata. The fire element is cooling, air element increasing. Stay grounded with steady practice.\n\nMany people find workouts still feel good, just not as effortless as follicular phase. This is normal — honour the shift.',
+          suggestions: ['Pilates', 'Swimming', 'Moderate strength', 'Steady cardio', 'Hiking'],
+        },
+        {
+          title: 'Nutrition',
+          icon: '🥗',
+          summary: 'Prioritise: Complex carbohydrates (quinoa, lentils, sweet potatoes, brown rice), protein with meals (salmon, chicken, tempeh, eggs), healthy fats (avocado, nuts, nut butters), magnesium-rich snacks (pumpkin seeds, almonds, dark chocolate), and satisfying complete meals.',
+          details: 'Metabolic rate begins rising. Insulin sensitivity starts to decrease slightly. Appetite naturally increases. Your body isn\'t "hungrier for no reason" — your metabolic rate has genuinely increased. Eat more.\n\nNutrient focus: B vitamins (chickpeas, poultry, potatoes, bananas) and magnesium.\n\nTCM: Continue Blood nourishment with bone broth, red dates, dark leafy greens. Begin incorporating more warming foods — root vegetables, cooked grains. Smooth Qi flow with citrus, rose tea, fennel.\n\nAyurveda: Grounding Vata foods become more important — warm, cooked, nourishing. Root vegetables, rice, warming spices, ghee.',
+          suggestions: ['Quinoa & lentils', 'Sweet potatoes', 'Salmon', 'Nut butters', 'Pumpkin seeds', 'Dark chocolate'],
+        },
+        {
+          title: 'Energy & Social',
+          icon: '⚡',
+          summary: '• Completing projects started during follicular phase\n• Detail-oriented work and admin tasks\n• Organising and planning\n• Small gatherings with close friends\n• Home projects and nesting activities\n• Creative work that requires focus',
+          details: 'Progesterone\'s calming neurotransmitter effects create a more centred, focused energy. You\'re past the social sparkle of ovulation but still mentally sharp and productive. This is your "finishing" energy — great time to tie up loose ends, organise, and complete tasks that need sustained attention.',
+        },
+        {
+          title: 'Meal Timing',
+          icon: '🕐',
+          summary: '• Pay close attention to hunger signals\n• Regular meals help stabilise energy\n• Satisfying snacks are appropriate\n• Don\'t push long fasts — your body needs fuel',
+          details: 'Insulin sensitivity is slightly lower than follicular/ovulatory. Appetite is increasing. Your body needs more frequent nourishment as metabolic rate rises. If you\'re genuinely hungry, eat.',
+        },
+        {
+          title: 'Common Experiences',
+          icon: '📋',
+          summary: '• Increased appetite (totally normal — metabolic rate has risen)\n• Slight breast tenderness (progesterone effect)\n• Warmer body temperature\n• Stable mood — the calm before potential PMS\n• Good sleep (progesterone can be sleep-promoting)\n• Shift toward introversion',
+          details: 'Progesterone can be sleep-promoting, which is a welcome benefit. Your social battery depletes faster than during the ovulatory phase. The increased appetite is real — your metabolic rate has risen and your body genuinely needs more fuel.',
+        },
+      ],
+      keyTakeaways: [
+        'Your metabolic rate increases — honour your hunger',
+        'Great time for completing tasks and detail-oriented work',
+        'Still strong for moderate training — honour the shift from peak',
+      ],
+    },
+    'Late Luteal': {
+      title: 'Late Luteal Phase',
+      subtitle: 'Inner Late Autumn',
+      icon: '🌗',
+      color: 'from-purple-700 to-indigo-800',
+      cardBg: 'bg-gradient-to-br from-purple-100 to-indigo-100',
+      days: 'Days 24–28',
+      overview: 'Progesterone and estrogen both drop sharply in the days before your period. This hormonal crash triggers PMS symptoms. Serotonin and dopamine decrease, and your body is preparing for menstruation.',
+      sections: [
+        {
+          title: 'How You Might Feel',
+          icon: '💭',
+          summary: '• Energy plummeting\n• Mood swings, irritability, or weepiness\n• Strong cravings (especially carbs and sweets)\n• Bloating and breast tenderness\n• Fatigue and need for rest\n• Low frustration tolerance\n• Desire to withdraw socially',
+          details: 'When progesterone and estrogen drop rapidly, so do their calming and mood-boosting effects. Serotonin and dopamine decrease, triggering carb cravings and mood changes. GABA (calming neurotransmitter) is affected. This is a hormonal crash — your feelings are real and valid.',
+        },
+        {
+          title: 'Training & Movement',
+          icon: '🏃‍♀️',
+          summary: 'What works well: Rest days, walking, gentle restorative yoga, stretching and foam rolling, light pilates or barre.\n\nWhat to avoid: Heavy lifting, long endurance sessions, anything that feels like pushing through.',
+          details: 'Hormone withdrawal affects energy profoundly. Motivation decreases (dopamine is lower). Your body genuinely needs rest. Intense training adds stress when your system is already stressed. Recovery capacity is lowest.\n\nTCM: Qi and Blood are turning deeply inward, preparing for menstruation. This is the time for consolidation and rest. Forcing Yang activity depletes reserves.\n\nAyurveda: Vata is high and increasing — you need grounding, warmth, and stillness. Movement should be gentle and supportive, never depleting.\n\nMany people find even a walk can feel like effort. This is normal. Your body is working hard internally. Rest is productive work.',
+          suggestions: ['Rest days', 'Walking', 'Yin yoga', 'Stretching', 'Foam rolling'],
+        },
+        {
+          title: 'Nutrition',
+          icon: '🥗',
+          summary: 'Prioritise: Complex carbohydrates (oatmeal, whole grain bread, sweet potatoes), magnesium (dark chocolate, avocado), calcium, B6 foods (chickpeas, potatoes, bananas), satisfying complete meals, and whatever you\'re craving in moderation.\n\nCRITICAL: Restricting calories during late luteal makes PMS worse.',
+          details: 'Metabolic rate is STILL elevated. Serotonin drops sharply, driving intense carb and sweet cravings. Insulin sensitivity is lowest of the entire cycle. You need around 10% extra calories to meet your body\'s increased needs.\n\nTCM: Deeply nourishing Blood foods — bone broth, red meat, dark leafy greens. Warming, grounding foods — slow-cooked stews, root vegetables, warming spices. Smooth Qi to prevent stagnation with ginger, rose, citrus peel. Avoid cold, raw, or processed foods.\n\nAyurveda: Heavy Vata-calming foods — warm milk with ghee and spices, rice pudding, root vegetable curries. Sweet, sour, salty tastes to ground Vata. Cooked, warm, moist, slightly heavy foods.',
+          suggestions: ['Oatmeal', 'Dark chocolate', 'Sweet potatoes', 'Chickpeas', 'Warming stews', 'Satisfying meals'],
+        },
+        {
+          title: 'Energy & Social',
+          icon: '⚡',
+          summary: '• Permission to say NO to social obligations\n• Early bedtimes and naps\n• Quiet, alone time (or only with very safe people)\n• Cozy, comforting activities\n• Letting yourself cry if you need to\n• Minimal stimulation\n• Gentle self-compassion',
+          details: 'Plummeting estrogen and progesterone take serotonin, dopamine, and GABA with them. Your stress tolerance drops. Small annoyances feel huge.\n\nReframe PMS: Late luteal phase can reveal what isn\'t working in your life. When your tolerance for BS drops, you see clearly what needs to change. Your emotions aren\'t crazy — they\'re information. Be gentle with yourself.',
+        },
+        {
+          title: 'Meal Timing',
+          icon: '🕐',
+          summary: '• Eat regularly (every 3–4 hours)\n• Don\'t skip breakfast\n• Stabilise blood sugar with protein + complex carbs\n• Honour all hunger\n• Satisfying snacks are necessary, not indulgent',
+          details: 'Insulin sensitivity is lowest. Blood sugar swings are common. Fasting DRAMATICALLY worsens PMS by adding cortisol stress on top of hormone withdrawal. Regular meals and snacks are essential for mood and energy stability.',
+        },
+        {
+          title: 'Common Experiences',
+          icon: '📋',
+          summary: 'Physical: Bloating, breast tenderness, acne breakouts, digestive changes, headaches or migraines, fatigue and heaviness.\n\nEmotional: Irritability and anger, tearfulness, anxiety or doom feelings, sadness or low mood.',
+          details: 'Bloating: Progesterone causes water retention — this is temporary. Acne: Androgens rise slightly as estrogen/progesterone drop. Headaches: Estrogen withdrawal is a common trigger. Irritability: Lower frustration tolerance is biological. Tearfulness: Progesterone withdrawal can trigger crying. Anxiety: Neurotransmitter shifts create this.\n\nWhen PMS is severe: If PMS significantly disrupts your life every cycle (can\'t work, relationships suffer, thoughts of self-harm), talk to a healthcare provider. PMDD (premenstrual dysphoric disorder) is a real medical condition that responds to treatment. You don\'t have to suffer through this.',
+        },
+      ],
+      keyTakeaways: [
+        'Rest is productive — your body is working hard internally',
+        'Restricting food makes PMS worse — honour your hunger and cravings',
+        'PMS emotions are information, not weakness — be gentle with yourself',
+      ],
+    },
   };
 
   // Onboarding Steps
@@ -791,25 +1066,31 @@ const CycleApp = () => {
         <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-indigo-100 shadow-lg">
           <div className="max-w-4xl mx-auto px-4 py-3">
             <div className="flex justify-between items-center gap-2">
-              <button 
+              <button
                 onClick={() => setCurrentView('today')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
                 <span className="text-xs font-medium mt-1">Today</span>
               </button>
-              <button 
+              <button
                 onClick={() => setCurrentView('cycle')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
                 <span className="text-xs font-medium mt-1">Cycle</span>
               </button>
-              <button 
+              <button
                 onClick={() => setCurrentView('log')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
                 <span className="text-xs font-medium mt-1">Log</span>
               </button>
-              <button 
+              <button
+                onClick={() => { setCurrentView('learn'); setLearnPhase(null); }}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-xs font-medium mt-1">Learn</span>
+              </button>
+              <button
                 onClick={() => setCurrentView('me')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
@@ -1186,13 +1467,19 @@ const CycleApp = () => {
               >
                 <span className="text-xs font-medium mt-1">Cycle</span>
               </button>
-              <button 
+              <button
                 onClick={() => setCurrentView('log')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
                 <span className="text-xs font-medium mt-1">Log</span>
               </button>
-              <button 
+              <button
+                onClick={() => { setCurrentView('learn'); setLearnPhase(null); }}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-xs font-medium mt-1">Learn</span>
+              </button>
+              <button
                 onClick={() => setCurrentView('me')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-indigo-700 bg-indigo-50"
               >
@@ -1393,19 +1680,25 @@ const CycleApp = () => {
               >
                 <span className="text-xs font-medium mt-1">Today</span>
               </button>
-              <button 
+              <button
                 onClick={() => setCurrentView('cycle')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-indigo-700 bg-indigo-50"
               >
                 <span className="text-xs font-semibold mt-1">Cycle</span>
               </button>
-              <button 
+              <button
                 onClick={() => setCurrentView('log')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
                 <span className="text-xs font-medium mt-1">Log</span>
               </button>
-              <button 
+              <button
+                onClick={() => { setCurrentView('learn'); setLearnPhase(null); }}
+                className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
+              >
+                <span className="text-xs font-medium mt-1">Learn</span>
+              </button>
+              <button
                 onClick={() => setCurrentView('me')}
                 className="flex-1 flex flex-col items-center py-2 rounded-lg text-gray-400 hover:text-indigo-600 hover:bg-indigo-50 transition"
               >
@@ -1559,13 +1852,19 @@ const CycleApp = () => {
               >
                 <span className="text-xs font-medium mt-1">Cycle</span>
               </button>
-              <button 
+              <button
                 onClick={() => setCurrentView('log')}
                 className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'log' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
               >
                 <span className="text-xs font-medium mt-1">Log</span>
               </button>
-              <button 
+              <button
+                onClick={() => { setCurrentView('learn'); setLearnPhase(null); }}
+                className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'learn' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+              >
+                <span className="text-xs font-medium mt-1">Learn</span>
+              </button>
+              <button
                 onClick={() => setCurrentView('me')}
                 className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${currentView === 'me' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
               >
@@ -1574,6 +1873,214 @@ const CycleApp = () => {
             </div>
           </div>
         </div>
+      </div>
+    );
+  };
+
+  // Bottom Nav component shared across Learn views
+  const BottomNav = ({ active }) => (
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-indigo-100 shadow-lg">
+      <div className="max-w-4xl mx-auto px-4 py-3">
+        <div className="flex justify-between items-center gap-2">
+          <button
+            onClick={() => setCurrentView('today')}
+            className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${active === 'today' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+          >
+            <span className={`text-xs ${active === 'today' ? 'font-semibold' : 'font-medium'} mt-1`}>Today</span>
+          </button>
+          <button
+            onClick={() => setCurrentView('cycle')}
+            className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${active === 'cycle' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+          >
+            <span className={`text-xs ${active === 'cycle' ? 'font-semibold' : 'font-medium'} mt-1`}>Cycle</span>
+          </button>
+          <button
+            onClick={() => setCurrentView('log')}
+            className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${active === 'log' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+          >
+            <span className={`text-xs ${active === 'log' ? 'font-semibold' : 'font-medium'} mt-1`}>Log</span>
+          </button>
+          <button
+            onClick={() => { setCurrentView('learn'); setLearnPhase(null); }}
+            className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${active === 'learn' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+          >
+            <span className={`text-xs ${active === 'learn' ? 'font-semibold' : 'font-medium'} mt-1`}>Learn</span>
+          </button>
+          <button
+            onClick={() => setCurrentView('me')}
+            className={`flex-1 flex flex-col items-center py-2 rounded-lg transition ${active === 'me' ? 'text-indigo-700 bg-indigo-50' : 'text-gray-400 hover:text-indigo-600 hover:bg-indigo-50'}`}
+          >
+            <span className={`text-xs ${active === 'me' ? 'font-semibold' : 'font-medium'} mt-1`}>Me</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+
+  // Learn landing page
+  const LearnView = () => {
+    const phases = ['Menstrual', 'Follicular', 'Ovulatory', 'Early Luteal', 'Late Luteal'];
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-28" style={{fontFamily: 'Lexend, sans-serif'}}>
+        <div className="bg-white shadow-sm border-b border-indigo-100">
+          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <h1 className="text-4xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">
+              🌙 miriam
+            </h1>
+            <button
+              onClick={() => setCurrentView('about')}
+              className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold transition"
+            >
+              About
+            </button>
+          </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+          <div className="text-center space-y-2">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-700 to-purple-800 bg-clip-text text-transparent">Learn</h2>
+            <p className="text-gray-600">Understand your cycle, phase by phase</p>
+          </div>
+
+          <div className="space-y-4">
+            {phases.map((phaseName) => {
+              const guide = phaseGuides[phaseName];
+              return (
+                <button
+                  key={phaseName}
+                  onClick={() => setLearnPhase(phaseName)}
+                  className={`w-full ${guide.cardBg} rounded-3xl p-6 shadow-lg border border-indigo-100 text-left hover:shadow-xl transition-all hover:scale-[1.02]`}
+                >
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-4 flex-1">
+                      <span className="text-4xl">{guide.icon}</span>
+                      <div className="flex-1">
+                        <h3 className="text-lg font-bold text-indigo-900">{guide.title}</h3>
+                        <p className="text-sm text-indigo-600 font-medium">{guide.subtitle}</p>
+                        <p className="text-xs text-gray-500 mt-1">{guide.days}</p>
+                        <p className="text-sm text-gray-600 mt-2 line-clamp-2">{guide.overview.slice(0, 100)}...</p>
+                      </div>
+                    </div>
+                    <span className="text-indigo-400 text-xl ml-2">›</span>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        <BottomNav active="learn" />
+      </div>
+    );
+  };
+
+  // Phase guide detail page
+  const PhaseGuideView = () => {
+    const [expandedSections, setExpandedSections] = useState([]);
+    const guide = phaseGuides[learnPhase];
+
+    if (!guide) return null;
+
+    const toggleSection = (index) => {
+      setExpandedSections((prev) =>
+        prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      );
+    };
+
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-purple-50 to-purple-100 pb-28" style={{fontFamily: 'Lexend, sans-serif'}}>
+        <div className="bg-white shadow-sm border-b border-indigo-100">
+          <div className="max-w-4xl mx-auto px-6 py-4 flex items-center justify-between">
+            <button
+              onClick={() => setLearnPhase(null)}
+              className="text-indigo-600 hover:text-indigo-800 font-semibold transition flex items-center space-x-1"
+            >
+              <span>←</span>
+              <span>Back</span>
+            </button>
+            <button
+              onClick={() => setCurrentView('about')}
+              className="text-indigo-600 hover:text-indigo-800 text-sm font-semibold transition"
+            >
+              About
+            </button>
+          </div>
+        </div>
+
+        <div className="max-w-2xl mx-auto px-6 py-8 space-y-6">
+          {/* Hero card */}
+          <div className={`bg-gradient-to-r ${guide.color} rounded-3xl p-8 text-white shadow-xl`}>
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-white/80 text-sm font-medium">{guide.days}</p>
+                <h2 className="text-3xl font-bold mt-1">{guide.title}</h2>
+                <p className="text-white/90 mt-1 text-lg">{guide.subtitle}</p>
+              </div>
+              <span className="text-6xl">{guide.icon}</span>
+            </div>
+          </div>
+
+          {/* Overview */}
+          <div className="bg-white rounded-3xl p-6 shadow-lg border border-indigo-100">
+            <h3 className="text-lg font-bold text-indigo-900 mb-3">Overview</h3>
+            <p className="text-gray-700 leading-relaxed">{guide.overview}</p>
+          </div>
+
+          {/* Sections */}
+          {guide.sections.map((section, index) => (
+            <div key={index} className="bg-white rounded-3xl shadow-lg border border-indigo-100 overflow-hidden">
+              <div className="p-6">
+                <div className="flex items-center space-x-3 mb-3">
+                  <span className="text-2xl">{section.icon}</span>
+                  <h4 className="text-lg font-bold text-indigo-900">{section.title}</h4>
+                </div>
+                <p className="text-gray-700 leading-relaxed whitespace-pre-line">{section.summary}</p>
+
+                <button
+                  onClick={() => toggleSection(index)}
+                  className="text-indigo-600 hover:text-indigo-800 text-sm font-medium mt-4 flex items-center space-x-1"
+                >
+                  <span>{expandedSections.includes(index) ? '▲' : '▼'}</span>
+                  <span>{expandedSections.includes(index) ? 'Show less' : 'Learn more'}</span>
+                </button>
+
+                {expandedSections.includes(index) && (
+                  <div className="mt-4 bg-indigo-50 rounded-xl p-4 space-y-3 border border-indigo-100">
+                    <p className="text-sm text-indigo-900 leading-relaxed whitespace-pre-line">{section.details}</p>
+                    {section.suggestions && section.suggestions.length > 0 && (
+                      <div>
+                        <p className="text-sm font-semibold text-indigo-900 mb-2">Try:</p>
+                        <div className="flex flex-wrap gap-2">
+                          {section.suggestions.map((suggestion, idx) => (
+                            <span key={idx} className="bg-indigo-50 text-indigo-700 px-3 py-1 rounded-xl text-sm border border-indigo-200">
+                              {suggestion}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+            </div>
+          ))}
+
+          {/* Key Takeaways */}
+          <div className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-3xl p-6 shadow-lg border border-indigo-200">
+            <h3 className="text-lg font-bold text-indigo-900 mb-4">Key Takeaways</h3>
+            <ul className="space-y-3">
+              {guide.keyTakeaways.map((takeaway, idx) => (
+                <li key={idx} className="flex items-start space-x-3">
+                  <span className="text-indigo-600 mt-0.5">✓</span>
+                  <span className="text-indigo-900">{takeaway}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <BottomNav active="learn" />
       </div>
     );
   };
@@ -1588,6 +2095,10 @@ const CycleApp = () => {
   if (currentView === 'about') return <AboutView />;
   if (currentView === 'log') return <LogView />;
   if (currentView === 'cycle') return <CycleView />;
+  if (currentView === 'learn') {
+    if (learnPhase) return <PhaseGuideView />;
+    return <LearnView />;
+  }
   if (currentView === 'me') return <MeView />;
   if (currentView === 'today') return <TodayView />;
   
