@@ -14,13 +14,13 @@ Miriam is a cycle tracking app that provides science-backed guidance for trainin
 
 ### Key Features
 
-- ** Cycle Tracking**: Track your menstrual cycle with visual calendar and phase indicators so you can plan accordingly
-- ** Personalised Guidance**: Get adaptive recommendations for training, nutrition, and energy based on:
+- **Cycle Tracking**: Track your menstrual cycle with visual calendar and phase indicators so you can plan accordingly
+- **Personalised Guidance**: Get adaptive recommendations for training, nutrition, and energy based on:
   - Current cycle phase (Menstrual, Follicular, Ovulatory, Early and Late Luteal)
   - Daily inputs (sleep quality, stress, energy levels)
   - Your unique patterns over time
-- ** Privacy-First**: 100% local storage—no backend, no cloud, no data collection
-- ** Body-Positive Language**: Supportive, stigma-free approach to cycle awareness
+- **Privacy-First**: 100% local storage—no backend, no cloud, no data collection
+- **Body-Positive Language**: Supportive, stigma-free approach to cycle awareness
 
 ---
 
@@ -76,4 +76,4 @@ Miriam is **not medical advice**. It's an educational tool based on general horm
 
 ---
 
-### 🌙 *"Your body, your data, your choice."*
+### 🌙 *Your body, your data, your choice.*
