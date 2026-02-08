@@ -776,9 +776,6 @@ const CycleApp = () => {
     mood: '',
     energy: '',
     stress: '',
-    workout: { type: '', intensity: '', notes: '' },
-    fasting: '',
-    notes: ''
   });
     const today = new Date().toISOString().split('T')[0];
     const existingLog = userData?.dailyLogs?.[today];
@@ -801,9 +798,6 @@ const CycleApp = () => {
         mood: '',
         energy: '',
         stress: '',
-        workout: { type: '', intensity: '', notes: '' },
-        fasting: '',
-        notes: ''
       });
     };
 
@@ -911,72 +905,6 @@ const CycleApp = () => {
             </div>
 
             <div className="h-px bg-indigo-100"></div>
-
-            <div>
-              <label className="block text-sm font-semibold text-indigo-900 mb-2">
-                💪 Movement <span className="text-gray-400 font-normal">(optional)</span>
-              </label>
-              <input
-                type="text"
-                value={todayLog.workout.type}
-                onChange={(e) => setTodayLog({...todayLog, workout: {...todayLog.workout, type: e.target.value}})}
-                placeholder="e.g., Strength training, Yoga, HIIT"
-                className="w-full px-4 py-3 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none mb-2"
-              />
-              
-              <div className="mb-2">
-                <label className="block text-xs text-gray-600 mb-2">Intensity</label>
-                <div className="grid grid-cols-3 gap-2">
-                  {['low', 'medium', 'high'].map((intensity) => (
-                    <button
-                      key={intensity}
-                      onClick={() => setTodayLog({...todayLog, workout: {...todayLog.workout, intensity}})}
-                      className={`py-2 px-3 rounded-lg font-medium capitalize text-sm transition ${
-                        todayLog.workout.intensity === intensity
-                          ? 'bg-indigo-700 text-white shadow-lg'
-                          : 'bg-indigo-50 text-indigo-700 hover:bg-indigo-100 border border-indigo-200'
-                      }`}
-                    >
-                      {intensity}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              <textarea
-                value={todayLog.workout.notes}
-                onChange={(e) => setTodayLog({...todayLog, workout: {...todayLog.workout, notes: e.target.value}})}
-                placeholder="How did it feel?"
-                rows="2"
-                className="w-full px-4 py-3 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none resize-none"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-indigo-900 mb-2">
-                ⏰ Meal Times <span className="text-gray-400 font-normal">(optional)</span>
-              </label>
-              <input
-                type="text"
-                value={todayLog.fasting}
-                onChange={(e) => setTodayLog({...todayLog, fasting: e.target.value})}
-                placeholder="e.g., 3 meals 2 snacks, lunch and dinner, 16:8"
-                className="w-full px-4 py-3 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-semibold text-indigo-900 mb-2">
-                📝 Notes <span className="text-gray-400 font-normal">(optional)</span>
-              </label>
-              <textarea
-                value={todayLog.notes}
-                onChange={(e) => setTodayLog({...todayLog, notes: e.target.value})}
-                placeholder="Anything else you want to remember about today?"
-                rows="3"
-                className="w-full px-4 py-3 border-2 border-indigo-200 rounded-xl focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 focus:outline-none resize-none"
-              />
-            </div>
           </div>
 
           <button
