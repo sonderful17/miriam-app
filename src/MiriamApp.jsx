@@ -350,7 +350,7 @@ const CycleApp = () => {
         },
       ],
       keyTakeaways: [
-        'Rest is productive — your body is doing important work',
+        'Rest is productive, your body is doing important work',
         'Iron-rich and anti-inflammatory foods support recovery',
         'Gentle movement helps, but pushing too hard backfires',
       ],
@@ -388,25 +388,25 @@ const CycleApp = () => {
           title: 'Energy & Social',
           icon: '⚡',
           summary: '• Starting new projects or initiatives\n• Social gatherings and networking\n• Creative brainstorming\n• Learning new skills\n• Important conversations\n• Scheduling meetings or presentations',
-          details: 'Rising estrogen boosts neurotransmitters associated with motivation, connection, and optimism. Your verbal skills, memory, and social cognition are enhanced. This is your planning and initiation phase — set your intentions and start building momentum.',
+          details: 'Rising estrogen boosts neurotransmitters associated with motivation, connection, and optimism. Your verbal skills, memory, and social cognition are enhanced. This is your planning and initiation phase, set your intentions and start building momentum.',
         },
         {
           title: 'Meal Timing',
           icon: '🕐',
           summary: '• Your body can handle flexible meal frequency\n• Still listen to hunger cues\n• Good time to experiment with meal timing if curious',
-          details: 'High insulin sensitivity means your body efficiently manages glucose. Your metabolism is at its most flexible and your body can switch between fuel sources easily. Many people find fasting feels easier during follicular phase — but "can tolerate" doesn\'t mean "should do".',
+          details: 'High insulin sensitivity means your body efficiently manages glucose. Your metabolism is at its most flexible and your body can switch between fuel sources easily. Many people find fasting feels easier during follicular phase, but "can tolerate" doesn\'t mean "should do".',
         },
         {
           title: 'Common Experiences',
           icon: '📋',
           summary: '• Increased libido\n• Clearer skin\n• Better sleep\n• Heightened senses\n• Optimism bias (may take on too much)\n• Cervical fluid changes',
-          details: 'Rising estrogen and testosterone increase sex drive. Estrogen improves skin quality. Taste, smell, and hearing may be enhanced. You may take on too much with the optimism bias — pace yourself. Discharge increases and becomes clearer as ovulation approaches.',
+          details: 'Rising estrogen and testosterone increase sex drive. Estrogen improves skin quality. Taste, smell, and hearing may be enhanced. You may take on too much with the optimism bias so pace yourself. Discharge increases and becomes clearer as ovulation approaches.',
         },
       ],
       keyTakeaways: [
-        'This is your power window for training — push for PRs',
+        'This is your power window for training',
         'Rising estrogen boosts mood, energy, and cognitive function',
-        'Your body efficiently uses carbohydrates — fuel your workouts',
+        'Your body efficiently uses carbohydrates fuel your workouts',
       ],
     },
     Ovulatory: {
@@ -435,14 +435,14 @@ const CycleApp = () => {
           title: 'Nutrition',
           icon: '🥗',
           summary: 'Prioritise: Fibre-rich foods (raw vegetables, fruits, whole grains), antioxidants (berries, colourful vegetables), omega-3s (fatty fish, walnuts, flax), cruciferous vegetables, and lighter proteins.',
-          details: 'Metabolism is transitioning and starting to rise. Insulin sensitivity remains good. Digestion is strong — your gut can handle variety and estrogen supports gut motility.\n\nNutrient focus: Vitamin C (supports progesterone production), glutathione-rich foods (asparagus, avocado), B vitamins.\n\nTCM recommends cooling foods to balance peak Yang. Ayurveda suggests Pitta-balancing: cooling, sweet, bitter — coconut, cilantro, cucumber, mint.',
+          details: 'Metabolism is transitioning and starting to rise. Insulin sensitivity remains good. Digestion is strong. Your gut can handle variety and estrogen supports gut motility.\n\nNutrient focus: Vitamin C (supports progesterone production), glutathione-rich foods (asparagus, avocado), B vitamins.\n\nTCM recommends cooling foods to balance peak Yang. Ayurveda suggests Pitta-balancing: cooling, sweet, bitter — coconut, cilantro, cucumber, mint.',
           suggestions: ['Raw veggies & salads', 'Berries', 'Fatty fish', 'Colourful vegetables', 'Fresh fruits'],
         },
         {
           title: 'Energy & Social',
           icon: '⚡',
           summary: '• Social events and parties\n• Date nights\n• Creative collaboration\n• Networking events or conferences\n• Leading meetings\n• Public speaking',
-          details: 'Peak estrogen enhances verbal fluency, emotional intelligence, and social bonding. You\'re at your most charismatic and confident. Schedule high-stakes social or professional events during this window — you\'re naturally persuasive, articulate, and confident.',
+          details: 'Peak estrogen enhances verbal fluency, emotional intelligence, and social bonding. You\'re at your most charismatic and confident. Schedule high-stakes social or professional events during this window as you\'re naturally persuasive, articulate, and confident.',
         },
         {
           title: 'Meal Timing',
@@ -458,7 +458,7 @@ const CycleApp = () => {
         },
       ],
       keyTakeaways: [
-        'Peak performance — test your limits and go for PRs',
+        'Peak performance! Test your limits',
         'You\'re at your most charismatic and confident',
         'Schedule important social and professional events now',
       ],
@@ -470,19 +470,19 @@ const CycleApp = () => {
       color: 'from-purple-600 to-indigo-700',
       cardBg: 'bg-gradient-to-br from-purple-50 to-indigo-100',
       days: 'Days 17–23',
-      overview: 'Progesterone begins rising after ovulation and climbs steadily. Estrogen rises again (secondary peak) but stays lower than ovulation. Both hormones are elevated together. Progesterone has a calming, slightly sedating effect and raises body temperature, increasing metabolic rate by 100–300 calories per day.',
+      overview: 'Progesterone begins rising after ovulation and climbs steadily. Estrogen rises again (secondary peak) but stays lower than ovulation. Both hormones are elevated together. Progesterone has a calming, slightly sedating effect and raises body temperature, increasing metabolic rate.',
       sections: [
         {
           title: 'How You Might Feel',
           icon: '💭',
           summary: '• Energy is still good, just moderated from ovulation peak\n• Productive, task-oriented focus\n• Appetite starts increasing\n• Mood is steady, perhaps more introspective\n• Still capable and functional',
-          details: 'Progesterone has a calming, slightly sedating effect — it converts to allopregnanolone, a GABA-like compound. It raises body temperature slightly and increases metabolic rate by 100–300 calories per day. You\'re still riding some estrogen benefits, so this phase can feel quite stable and productive.',
+          details: 'Progesterone has a calming, slightly sedating effect. It raises body temperature slightly and increases metabolic rate. You\'re still riding some estrogen benefits, so this phase can feel quite stable and productive.',
         },
         {
           title: 'Training & Movement',
           icon: '🏃‍♀️',
           summary: 'What works well: Moderate-intensity strength training, pilates or barre classes, swimming, steady-state cardio, power walking or hiking, cycling at moderate pace.\n\nApproach carefully: Very long endurance efforts, back-to-back sessions, training in very hot conditions.',
-          details: 'Body temperature rises slightly (progesterone effect). Recovery takes a bit longer than follicular/ovulatory. You may overheat more easily during workouts. Strength maintenance is very doable — not quite peak performance, but still strong.\n\nTCM: Yang is still present but Qi begins to consolidate. The expansive energy of ovulation transitions to a more focused, inward-moving quality. Moderate movement supports smooth Qi flow.\n\nAyurveda: Transitioning from Pitta to Vata. The fire element is cooling, air element increasing. Stay grounded with steady practice.\n\nMany people find workouts still feel good, just not as effortless as follicular phase. This is normal — honour the shift.',
+          details: 'Body temperature rises slightly (progesterone effect). Recovery takes a bit longer than follicular/ovulatory. You may overheat more easily during workouts. Strength maintenance is very doable — not quite peak performance, but still strong.\n\nTCM: Yang is still present but Qi begins to consolidate. The expansive energy of ovulation transitions to a more focused, inward-moving quality. Moderate movement supports smooth Qi flow.\n\nAyurveda: Transitioning from Pitta to Vata. The fire element is cooling, air element increasing. Stay grounded with steady practice.\n\nMany people find workouts still feel good, just not as effortless as follicular phase.',
           suggestions: ['Pilates', 'Swimming', 'Moderate strength', 'Steady cardio', 'Hiking'],
         },
         {
@@ -490,7 +490,7 @@ const CycleApp = () => {
           icon: '🥗',
           summary: 'Prioritise: Complex carbohydrates (quinoa, lentils, sweet potatoes, brown rice), protein with meals (salmon, chicken, tempeh, eggs), healthy fats (avocado, nuts, nut butters), magnesium-rich snacks (pumpkin seeds, almonds, dark chocolate), and satisfying complete meals.',
           details: 'Metabolic rate begins rising. Insulin sensitivity starts to decrease slightly. Appetite naturally increases. Your body isn\'t "hungrier for no reason" — your metabolic rate has genuinely increased. Eat more.\n\nNutrient focus: B vitamins (chickpeas, poultry, potatoes, bananas) and magnesium.\n\nTCM: Continue Blood nourishment with bone broth, red dates, dark leafy greens. Begin incorporating more warming foods — root vegetables, cooked grains. Smooth Qi flow with citrus, rose tea, fennel.\n\nAyurveda: Grounding Vata foods become more important — warm, cooked, nourishing. Root vegetables, rice, warming spices, ghee.',
-          suggestions: ['Quinoa & lentils', 'Sweet potatoes', 'Salmon', 'Nut butters', 'Pumpkin seeds', 'Dark chocolate'],
+          suggestions: ['Lentils', 'Sweet potatoes', 'Salmon', 'Nut butters', 'Pumpkin seeds', 'Dark chocolate'],
         },
         {
           title: 'Energy & Social',
@@ -507,14 +507,14 @@ const CycleApp = () => {
         {
           title: 'Common Experiences',
           icon: '📋',
-          summary: '• Increased appetite (totally normal — metabolic rate has risen)\n• Slight breast tenderness (progesterone effect)\n• Warmer body temperature\n• Stable mood — the calm before potential PMS\n• Good sleep (progesterone can be sleep-promoting)\n• Shift toward introversion',
-          details: 'Progesterone can be sleep-promoting, which is a welcome benefit. Your social battery depletes faster than during the ovulatory phase. The increased appetite is real — your metabolic rate has risen and your body genuinely needs more fuel.',
+          summary: '• Increased appetite (totally normal as metabolic rate has risen)\n• Slight breast tenderness (progesterone effect)\n• Warmer body temperature\n• Stable mood, the calm before potential PMS\n• Good sleep (progesterone can be sleep-promoting)\n• Shift toward introversion',
+          details: 'Progesterone can be sleep-promoting, which is a welcome benefit. Your social battery depletes faster than during the ovulatory phase. Your metabolic rate has risen and your body genuinely needs more fuel.',
         },
       ],
       keyTakeaways: [
-        'Your metabolic rate increases — honour your hunger',
+        'Your metabolic rate increases, honour your hunger',
         'Great time for completing tasks and detail-oriented work',
-        'Still strong for moderate training — honour the shift from peak',
+        'Still strong for moderate training but recovery takes longer',
       ],
     },
     'Late Luteal': {
@@ -550,7 +550,7 @@ const CycleApp = () => {
           title: 'Energy & Social',
           icon: '⚡',
           summary: '• Permission to say NO to social obligations\n• Early bedtimes and naps\n• Quiet, alone time (or only with very safe people)\n• Cozy, comforting activities\n• Letting yourself cry if you need to\n• Minimal stimulation\n• Gentle self-compassion',
-          details: 'Plummeting estrogen and progesterone take serotonin, dopamine, and GABA with them. Your stress tolerance drops. Small annoyances feel huge.\n\nReframe PMS: Late luteal phase can reveal what isn\'t working in your life. When your tolerance for BS drops, you see clearly what needs to change. Your emotions aren\'t crazy — they\'re information. Be gentle with yourself.',
+          details: 'Plummeting estrogen and progesterone take serotonin, dopamine, and GABA with them. Your stress tolerance drops. Small annoyances feel huge.\n\nReframe PMS: Late luteal phase can reveal what isn\'t working in your life. When your tolerance for BS drops, you see clearly what needs to change. Your emotions aren\'t crazy, they\'re information. Be gentle with yourself.',
         },
         {
           title: 'Meal Timing',
@@ -562,7 +562,7 @@ const CycleApp = () => {
           title: 'Common Experiences',
           icon: '📋',
           summary: 'Physical: Bloating, breast tenderness, acne breakouts, digestive changes, headaches or migraines, fatigue and heaviness.\n\nEmotional: Irritability and anger, tearfulness, anxiety or doom feelings, sadness or low mood.',
-          details: 'Bloating: Progesterone causes water retention — this is temporary. Acne: Androgens rise slightly as estrogen/progesterone drop. Headaches: Estrogen withdrawal is a common trigger. Irritability: Lower frustration tolerance is biological. Tearfulness: Progesterone withdrawal can trigger crying. Anxiety: Neurotransmitter shifts create this.\n\nWhen PMS is severe: If PMS significantly disrupts your life every cycle (can\'t work, relationships suffer, thoughts of self-harm), talk to a healthcare provider. PMDD (premenstrual dysphoric disorder) is a real medical condition that responds to treatment. You don\'t have to suffer through this.',
+          details: 'Bloating: Progesterone causes water retention, this is temporary. Acne: Androgens rise slightly as estrogen/progesterone drop. Headaches: Estrogen withdrawal is a common trigger. Irritability: Lower frustration tolerance is biological. Tearfulness: Progesterone withdrawal can trigger crying. Anxiety: Neurotransmitter shifts create this.\n\nWhen PMS is severe: If PMS significantly disrupts your life every cycle (can\'t work, relationships suffer, thoughts of self-harm), talk to a healthcare provider. PMDD (premenstrual dysphoric disorder) is a real medical condition that responds to treatment. You don\'t have to suffer through this.',
         },
       ],
       keyTakeaways: [
