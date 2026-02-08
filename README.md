@@ -61,8 +61,6 @@ Guidance recommendations are based on research about hormonal fluctuations throu
 - Exercise tolerance and recovery across the cycle
 - Holistic guidance from Traditional Chinese Medicine and Ayurvedic practices
 
-*(Consider adding a SCIENCE.md file with detailed citations)*
-
 ---
 
 ## Disclaimer
